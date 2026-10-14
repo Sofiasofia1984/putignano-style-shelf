@@ -44,14 +44,16 @@ const looks = [
   { image: color.url, title: "Un colore che ti racconta", category: "Colore", detail: "Riflessi vivaci · Personalità" },
   { image: braids.url, title: "Geometrie intrecciate", category: "Styling", detail: "Trecce definite · Intrecci su misura" },
   { image: waves.url, title: "Biondo in movimento", category: "Colore", detail: "Sfumature luminose · Onde morbide" },
-  { image: barberStyling.url, title: "Il rituale barbershop", category: "Barbershop", detail: "Il lavoro in salone · Cura dei dettagli" },
   { image: bob.url, title: "Il carattere di un bob", category: "Taglio", detail: "Taglio corto · Texture naturale" },
   { image: updo.url, title: "Eleganza intrecciata", category: "Styling", detail: "Raccolto · Dettagli che fanno la differenza" },
   { image: sleekCopper.url, title: "Rame, pura luce", category: "Colore", detail: "Riflessi caldi · Una linea setosa" },
-  { image: barberSession.url, title: "Lo stile si costruisce", category: "Barbershop", detail: "Un momento di cura · Insieme in salone" },
   { image: straight.url, title: "Luce, linea, essenzialità", category: "Taglio", detail: "Taglio geometrico · Biondo freddo" },
   { image: copper.url, title: "Riflessi di rame", category: "Colore", detail: "Tonalità calde · Onde leggere" },
-  { image: barberTeam.url, title: "Passione condivisa", category: "Barbershop", detail: "Il team al lavoro · Hairshow" },
+];
+const barbershop = [
+  { image: barberStyling.url, title: "Il rituale barbershop", detail: "Il lavoro in salone · Cura dei dettagli" },
+  { image: barberSession.url, title: "Lo stile si costruisce", detail: "Un momento di cura · Insieme in salone" },
+  { image: barberTeam.url, title: "Passione condivisa", detail: "Il team al lavoro · Hairshow" },
 ];
 const films = [
   { url: filmOne.url, poster: posterOne.url, title: "Il movimento del biondo" },
