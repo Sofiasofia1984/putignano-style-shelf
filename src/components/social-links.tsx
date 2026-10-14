@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const socials = [
   { name: "Instagram", url: "https://www.instagram.com/hairshow_parrucchieri", icon: Instagram },
-  { name: "Facebook", url: "https://www.facebook.com/share/1QbRZdxoLR/", icon: Facebook },
+  { name: "Facebook", url: "https://www.facebook.com/Hairshowparrucchieri", icon: Facebook },
   { name: "TikTok", url: "https://www.tiktok.com/@hairshow.parrucch", icon: TikTokIcon },
 ];
 

@@ -14,6 +14,12 @@ import updo from "@/assets/look-updo.jpg.asset.json";
 import color from "@/assets/look-color.jpg.asset.json";
 import copper from "@/assets/look-copper.jpg.asset.json";
 import bob from "@/assets/look-bob.jpg.asset.json";
+import contrast from "@/assets/look-contrast.jpg.asset.json";
+import sleekCopper from "@/assets/look-copper-sleek.jpg.asset.json";
+import braids from "@/assets/look-braids.jpg.asset.json";
+import barberTeam from "@/assets/barbershop-team.jpg.asset.json";
+import barberStyling from "@/assets/barbershop-styling.jpg.asset.json";
+import barberSession from "@/assets/barbershop-session.jpg.asset.json";
 import filmOne from "@/assets/film-one.webm.asset.json";
 import filmTwo from "@/assets/film-two.webm.asset.json";
 import filmThree from "@/assets/film-three.webm.asset.json";
@@ -34,12 +40,18 @@ export const Route = createFileRoute("/")({
 });
 
 const looks = [
+  { image: contrast.url, title: "Contrasti di carattere", category: "Taglio", detail: "Corto dinamico · Ciuffo a contrasto" },
+  { image: color.url, title: "Un colore che ti racconta", category: "Colore", detail: "Riflessi vivaci · Personalità" },
+  { image: braids.url, title: "Geometrie intrecciate", category: "Styling", detail: "Trecce definite · Intrecci su misura" },
   { image: waves.url, title: "Biondo in movimento", category: "Colore", detail: "Sfumature luminose · Onde morbide" },
+  { image: barberStyling.url, title: "Il rituale barbershop", category: "Barbershop", detail: "Il lavoro in salone · Cura dei dettagli" },
   { image: bob.url, title: "Il carattere di un bob", category: "Taglio", detail: "Taglio corto · Texture naturale" },
   { image: updo.url, title: "Eleganza intrecciata", category: "Styling", detail: "Raccolto · Dettagli che fanno la differenza" },
+  { image: sleekCopper.url, title: "Rame, pura luce", category: "Colore", detail: "Riflessi caldi · Una linea setosa" },
+  { image: barberSession.url, title: "Lo stile si costruisce", category: "Barbershop", detail: "Un momento di cura · Insieme in salone" },
   { image: straight.url, title: "Luce, linea, essenzialità", category: "Taglio", detail: "Taglio geometrico · Biondo freddo" },
-  { image: color.url, title: "Un colore che ti racconta", category: "Colore", detail: "Riflessi vivaci · Personalità" },
   { image: copper.url, title: "Riflessi di rame", category: "Colore", detail: "Tonalità calde · Onde leggere" },
+  { image: barberTeam.url, title: "Passione condivisa", category: "Barbershop", detail: "Il team al lavoro · Hairshow" },
 ];
 const films = [
   { url: filmOne.url, poster: posterOne.url, title: "Il movimento del biondo" },
@@ -87,10 +99,10 @@ function Index() {
             <div className="hero-footer"><span>PASSIONE, CREATIVITÀ, CURA. OGNI GIORNO.</span><a href="#lavori">LASCIATI ISPIRARE <ArrowDown size={14} /></a></div>
           </div>
         </section>
-        <div className="service-strip container-shell"><b>Taglio & styling</b><span>✳</span><b>Colore & schiariture</b><span>✳</span><b>Acconciature</b><span>✳</span><b>Cura del capello</b></div>
+        <div className="service-strip container-shell"><b>Taglio & styling</b><span>✳</span><b>Colore & schiariture</b><span>✳</span><b>Barbershop</b><span>✳</span><b>Acconciature</b><span>✳</span><b>Cura del capello</b></div>
         <section id="lavori" className="section container-shell">
           <div className="section-heading"><div><span className="eyebrow">01 / Il nostro portfolio</span><h2>Ogni look, una storia.</h2></div><p>Capelli reali, personalità uniche.<br />Una selezione dei nostri lavori, fatti con passione.</p></div>
-          <div className="filter-row" aria-label="Filtra i lavori">{["Tutti", "Taglio", "Colore", "Styling"].map(f => <Button key={f} variant="ghost" data-active={filter === f} aria-pressed={filter === f} onClick={() => setFilter(f)}>{f}</Button>)}</div>
+          <div className="filter-row" aria-label="Filtra i lavori">{["Tutti", "Taglio", "Colore", "Styling", "Barbershop"].map(f => <Button key={f} variant="ghost" data-active={filter === f} aria-pressed={filter === f} onClick={() => setFilter(f)}>{f}</Button>)}</div>
           <div className="works-grid">{looks.filter(l => filter === "Tutti" || l.category === filter).map(l => <Button variant="ghost" className="work-item" key={l.title} aria-label={`Apri foto: ${l.title}`} onClick={() => setMedia({ url: l.image, title: l.title })}><div className="w-full"><div className="work-image"><img src={l.image} alt={l.title} loading="lazy" /></div><div className="work-caption"><div><h3>{l.title}</h3><p>{l.category}</p></div><ArrowUpRight size={18} /></div></div></Button>)}</div>
         </section>
         <section id="salone" className="section about-band"><div className="container-shell about-layout"><img src={team.url} className="about-photo" alt="Il team Hairshow insieme in salone" loading="lazy" /><div className="about-copy"><span className="eyebrow">02 / Piacere, Hairshow</span><h2>Le mani, la passione.<br />Il tuo prossimo look.</h2><p>Ci piace ascoltarti, conoscere il tuo stile e dare forma a ciò che ti fa stare bene. Dal taglio al colore, ogni dettaglio è un modo per esprimere chi sei.</p><p>A Putignano, Hairshow è il nostro spazio di creatività. E il tuo momento da dedicare a te.</p><p className="signature">IL TEAM HAIRSHOW — PUTIGNANO</p><Button asChild variant="link" className="p-0 mt-4"><a href="#contatti">Ci vediamo in salone <ArrowUpRight /></a></Button></div></div></section>
