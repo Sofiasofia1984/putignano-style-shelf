@@ -20,6 +20,11 @@ import braids from "@/assets/look-braids.jpg.asset.json";
 import barberTeam from "@/assets/barbershop-team.jpg.asset.json";
 import barberStyling from "@/assets/barbershop-styling.jpg.asset.json";
 import barberSession from "@/assets/barbershop-session.jpg.asset.json";
+import barberFade from "@/assets/barber-fade.jpg.asset.json";
+import barberFreestyle from "@/assets/barber-freestyle.jpg.asset.json";
+import sposa from "@/assets/look-sposa.jpg.asset.json";
+import mullet from "@/assets/look-mullet.jpg.asset.json";
+import curly from "@/assets/look-curly.jpg.asset.json";
 import filmOne from "@/assets/film-one.webm.asset.json";
 import filmTwo from "@/assets/film-two.webm.asset.json";
 import filmThree from "@/assets/film-three.webm.asset.json";
@@ -49,8 +54,13 @@ const looks = [
   { image: sleekCopper.url, title: "Rame, pura luce", category: "Colore", detail: "Riflessi caldi · Una linea setosa" },
   { image: straight.url, title: "Luce, linea, essenzialità", category: "Taglio", detail: "Taglio geometrico · Biondo freddo" },
   { image: copper.url, title: "Riflessi di rame", category: "Colore", detail: "Tonalità calde · Onde leggere" },
+  { image: sposa.url, title: "Il giorno più bello", category: "Styling", detail: "Acconciatura sposa · Intrecci e luce" },
+  { image: mullet.url, title: "Taglio d'autore", category: "Taglio", detail: "Mullet moderno · Linee decise" },
+  { image: curly.url, title: "Ricci allo specchio", category: "Taglio", detail: "Texture naturale · Il momento del risultato" },
 ];
 const barbershop = [
+  { image: barberFade.url, title: "Sfumatura perfetta", detail: "Fade platino · Precisione al millimetro" },
+  { image: barberFreestyle.url, title: "Freestyle design", detail: "Rasatura artistica · Linee grafiche" },
   { image: barberStyling.url, title: "Il rituale barbershop", detail: "Il lavoro in salone · Cura dei dettagli" },
   { image: barberSession.url, title: "Lo stile si costruisce", detail: "Un momento di cura · Insieme in salone" },
   { image: barberTeam.url, title: "Passione condivisa", detail: "Il team al lavoro · Hairshow" },
