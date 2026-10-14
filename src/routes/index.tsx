@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, ArrowDown, MapPin, Menu, X, Play, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -63,6 +63,7 @@ function Index() {
         <a href="#" aria-label="Hairshow, inizio pagina"><img className="brand-image" src={brand.url} alt="Hairshow Parrucchieri" /></a>
         <nav aria-label="Navigazione principale" className={`nav-links ${menuOpen ? "open" : ""}`}>
           {[["Il salone", "salone"], ["I nostri lavori", "lavori"], ["In movimento", "video"], ["Contatti", "contatti"]].map(([label,id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+          <Link to="/prodotti" onClick={() => setMenuOpen(false)}>Prodotti <ArrowUpRight size={12} className="inline" /></Link>
         </nav>
         <Button asChild variant="editorial" className="desktop-booking"><a href="#contatti">Vieni a trovarci <ArrowUpRight /></a></Button>
         <Button variant="ghost" size="icon" className="mobile-menu" aria-label={menuOpen ? "Chiudi menu" : "Apri menu"} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
