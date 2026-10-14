@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, ArrowDown, MapPin, Menu, X, Play, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowDown, MapPin, Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SocialLinks } from "@/components/social-links";
+import { SalonVideo } from "@/components/salon-video";
 import brand from "@/assets/brand.jpg.asset.json";
 import hero from "@/assets/hero.jpg.asset.json";
 import team from "@/assets/team.jpg.asset.json";
@@ -48,7 +50,7 @@ const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Hairshow+Parruc
 function Index() {
   const [filter, setFilter] = useState("Tutti");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [media, setMedia] = useState<{ url: string; title: string; video?: boolean } | null>(null);
+  const [media, setMedia] = useState<{ url: string; title: string } | null>(null);
   useEffect(() => {
     if (!media) return;
     const previous = document.body.style.overflow;
@@ -92,11 +94,11 @@ function Index() {
           <div className="works-grid">{looks.filter(l => filter === "Tutti" || l.category === filter).map(l => <Button variant="ghost" className="work-item" key={l.title} aria-label={`Apri foto: ${l.title}`} onClick={() => setMedia({ url: l.image, title: l.title })}><div className="w-full"><div className="work-image"><img src={l.image} alt={l.title} loading="lazy" /></div><div className="work-caption"><div><h3>{l.title}</h3><p>{l.category}</p></div><ArrowUpRight size={18} /></div></div></Button>)}</div>
         </section>
         <section id="salone" className="section about-band"><div className="container-shell about-layout"><img src={team.url} className="about-photo" alt="Il team Hairshow insieme in salone" loading="lazy" /><div className="about-copy"><span className="eyebrow">02 / Piacere, Hairshow</span><h2>Le mani, la passione.<br />Il tuo prossimo look.</h2><p>Ci piace ascoltarti, conoscere il tuo stile e dare forma a ciò che ti fa stare bene. Dal taglio al colore, ogni dettaglio è un modo per esprimere chi sei.</p><p>A Putignano, Hairshow è il nostro spazio di creatività. E il tuo momento da dedicare a te.</p><p className="signature">IL TEAM HAIRSHOW — PUTIGNANO</p><Button asChild variant="link" className="p-0 mt-4"><a href="#contatti">Ci vediamo in salone <ArrowUpRight /></a></Button></div></div></section>
-        <section id="video" className="section container-shell"><div className="section-heading"><div><span className="eyebrow">03 / Hairshow in movimento</span><h2>Lo stile non si ferma.</h2></div><p>Riflessi, texture e movimento.<br />I nostri lavori, da un'altra prospettiva.</p></div><div className="video-grid">{films.map(f => <Button key={f.url} variant="ghost" className="film-button" aria-label={`Guarda video: ${f.title}`} onClick={() => setMedia({ url: f.url, title: f.title, video: true })}><img src={f.poster} alt={f.title} loading="lazy" /><span className="play-circle"><Play size={19} /></span><span className="film-caption">{f.title}</span></Button>)}</div></section>
-        <section id="contatti" className="section contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">04 / Ti aspettiamo</span><h2>Il tuo prossimo look<br />inizia qui.</h2><p>Hairshow Parrucchieri<br />Putignano, Puglia</p></div><Button asChild variant="inverse"><a href={mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></section>
+        <section id="video" className="section container-shell"><div className="section-heading"><div><span className="eyebrow">03 / Hairshow in movimento</span><h2>Lo stile non si ferma.</h2></div><p>Riflessi, texture e movimento.<br />I nostri lavori, da un'altra prospettiva.</p></div><div className="video-grid">{films.map(f => <SalonVideo key={f.url} {...f} />)}</div></section>
+        <section id="contatti" className="section contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">04 / Ti aspettiamo</span><h2>Il tuo prossimo look<br />inizia qui.</h2><p>Hairshow Parrucchieri<br />Putignano, Puglia</p><SocialLinks /></div><Button asChild variant="inverse"><a href={mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></section>
       </main>
-      <footer className="site-footer container-shell"><a href="#" className="footer-brand">hairshow.</a><span>© {new Date().getFullYear()} Hairshow Parrucchieri</span><span>Fatto di stile. A Putignano.</span></footer>
-      {media && <div className="media-overlay" role="dialog" aria-modal="true" aria-label={media.title} onClick={() => setMedia(null)}><Button autoFocus variant="inverse" size="icon" className="media-close" aria-label="Chiudi" onClick={() => setMedia(null)}><X /></Button>{media.video ? <video src={media.url} controls autoPlay playsInline onClick={e => e.stopPropagation()} /> : <img src={media.url} alt={media.title} onClick={e => e.stopPropagation()} />}</div>}
+      <footer className="site-footer container-shell"><a href="#" className="footer-brand">hairshow.</a><span>© {new Date().getFullYear()} Hairshow Parrucchieri</span><SocialLinks /></footer>
+      {media && <div className="media-overlay" role="dialog" aria-modal="true" aria-label={media.title} onClick={() => setMedia(null)}><Button autoFocus variant="inverse" size="icon" className="media-close" aria-label="Chiudi" onClick={() => setMedia(null)}><X /></Button><img src={media.url} alt={media.title} onClick={e => e.stopPropagation()} /></div>}
     </>
   );
 }

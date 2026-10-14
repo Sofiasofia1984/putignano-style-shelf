@@ -87,11 +87,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .about-copy p { font-size: 14px; line-height: 1.9; color: var(--muted-foreground); max-width: 405px; }
 .about-copy .signature { color: var(--foreground); font-size: 11px; margin-top: 32px; }
 .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-.film-button { position: relative; padding: 0; width: 100%; height: auto; aspect-ratio: 4 / 5; border-radius: 0; overflow: hidden; color: var(--background); }
-.film-button img { width: 100%; height: 100%; object-fit: cover; }
-.film-button::after { content: ""; position: absolute; inset: 0; background: var(--image-shade); }
-.play-circle { position: absolute; z-index: 1; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--background); background: var(--overlay); }
+.film-tile { position: relative; margin: 0; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; color: var(--background); background: var(--secondary); }
+.film-tile video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.film-tile::after { content: ""; position: absolute; inset: 0; background: var(--image-shade); pointer-events: none; }
+.film-toggle { position: absolute; top: 12px; right: 12px; z-index: 1; background: var(--overlay); }
 .film-caption { position: absolute; bottom: 25px; left: 25px; z-index: 1; font-size: 12px; }
+.social-links { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.social-links a { color: inherit; font-size: 11px; padding-inline: 0; }
+.contact-band .social-links { margin-top: 22px; }
 .contact-band { background: var(--foreground); color: var(--background); }
 .contact-layout { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
 .contact-layout p { font-size: 13px; opacity: .65; line-height: 1.8; }
@@ -156,8 +159,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
  .about-layout { grid-template-columns: 1fr; gap: 32px; }
  .about-photo { aspect-ratio: 5 / 4; object-position: center 40%; }
  .video-grid { grid-template-columns: repeat(3,1fr); gap: 9px; }
- .film-button { aspect-ratio: 9 / 16; }
- .play-circle { width: 35px; height: 35px; }
+ .film-tile { aspect-ratio: 9 / 16; }
  .film-caption { bottom: 12px; left: 9px; font-size: 9px; }
  .contact-layout { flex-direction: column; align-items: flex-start; gap: 20px; }
  .site-footer { flex-wrap: wrap; }

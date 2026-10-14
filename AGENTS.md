@@ -14,3 +14,4 @@
 - Keep the product selection on its own /prodotti route and do not invent product listings or contact numbers, because reservations require the salon's real catalog and recipient.
 - Serve uploaded salon media through asset JSON pointers, because source media must stay outside the repository.
 - Define visual styles and semantic tokens in the global stylesheet and use shared Button variants for interactions, because the editorial design must remain consistent.
+- Share social links across content pages and isolate inline video playback in a reusable component, because profile destinations and accessible playback behavior must stay consistent.

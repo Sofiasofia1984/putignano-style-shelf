@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight, MapPin, ShoppingBag, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SocialLinks } from "@/components/social-links";
 import brand from "@/assets/brand.jpg.asset.json";
 import team from "@/assets/team.jpg.asset.json";
 
@@ -41,6 +42,6 @@ function Products() {
       </section>
       <section className="section about-band"><div className="container-shell about-layout"><img src={team.url} alt="Il team Hairshow nel salone di Putignano" className="about-photo" loading="lazy" /><div className="about-copy"><span className="eyebrow">Il consiglio giusto, di persona</span><h2>Il tuo rituale.<br />La nostra cura.</h2><p>Ogni capello ha esigenze diverse. Ti aspettiamo da Hairshow per scegliere insieme la cura più adatta a te.</p><Button asChild variant="link" className="p-0 mt-4"><Link to="/">Scopri Hairshow <ArrowUpRight /></Link></Button></div></div></section>
     </main>
-    <footer className="site-footer container-shell"><Link to="/" className="footer-brand">hairshow.</Link><span>© {new Date().getFullYear()} Hairshow Parrucchieri</span><span>Putignano, Puglia</span></footer>
+    <footer className="site-footer container-shell"><Link to="/" className="footer-brand">hairshow.</Link><span>© {new Date().getFullYear()} Hairshow Parrucchieri</span><SocialLinks /></footer>
   </>;
 }
