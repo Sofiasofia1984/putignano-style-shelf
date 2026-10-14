@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, ArrowDown, MapPin, Menu, X, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowDown, MapPin, Menu, X, ArrowRight, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/social-links";
 import { SalonVideo } from "@/components/salon-video";
+import { salon, whatsappUrl } from "@/lib/salon";
 import brand from "@/assets/brand.jpg.asset.json";
 import hero from "@/assets/hero.jpg.asset.json";
 import team from "@/assets/team.jpg.asset.json";
@@ -45,7 +46,6 @@ const films = [
   { url: filmTwo.url, poster: posterTwo.url, title: "Sfumature di rame" },
   { url: filmThree.url, poster: posterThree.url, title: "Lo stile prende vita" },
 ];
-const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Hairshow+Parrucchieri+Putignano";
 
 function Index() {
   const [filter, setFilter] = useState("Tutti");
@@ -95,7 +95,7 @@ function Index() {
         </section>
         <section id="salone" className="section about-band"><div className="container-shell about-layout"><img src={team.url} className="about-photo" alt="Il team Hairshow insieme in salone" loading="lazy" /><div className="about-copy"><span className="eyebrow">02 / Piacere, Hairshow</span><h2>Le mani, la passione.<br />Il tuo prossimo look.</h2><p>Ci piace ascoltarti, conoscere il tuo stile e dare forma a ciò che ti fa stare bene. Dal taglio al colore, ogni dettaglio è un modo per esprimere chi sei.</p><p>A Putignano, Hairshow è il nostro spazio di creatività. E il tuo momento da dedicare a te.</p><p className="signature">IL TEAM HAIRSHOW — PUTIGNANO</p><Button asChild variant="link" className="p-0 mt-4"><a href="#contatti">Ci vediamo in salone <ArrowUpRight /></a></Button></div></div></section>
         <section id="video" className="section container-shell"><div className="section-heading"><div><span className="eyebrow">03 / Hairshow in movimento</span><h2>Lo stile non si ferma.</h2></div><p>Riflessi, texture e movimento.<br />I nostri lavori, da un'altra prospettiva.</p></div><div className="video-grid">{films.map(f => <SalonVideo key={f.url} {...f} />)}</div></section>
-        <section id="contatti" className="section contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">04 / Ti aspettiamo</span><h2>Il tuo prossimo look<br />inizia qui.</h2><p>Hairshow Parrucchieri<br />Putignano, Puglia</p><SocialLinks /></div><Button asChild variant="inverse"><a href={mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></section>
+        <section id="contatti" className="section contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">04 / Ti aspettiamo</span><h2>Il tuo prossimo look<br />inizia qui.</h2><p>Hairshow Parrucchieri<br />{salon.address}<br />{salon.opening}</p><SocialLinks /></div><div className="contact-actions"><Button asChild variant="inverse"><a href={whatsappUrl("Ciao Hairshow! Vorrei informazioni per un appuntamento in salone.")} target="_blank" rel="noopener noreferrer"><MessageCircle /> Scrivici su WhatsApp <ArrowUpRight /></a></Button><Button asChild variant="glass"><a href={`tel:${salon.phone}`}><Phone /> {salon.phoneLabel}</a></Button><Button asChild variant="glass"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></div></section>
       </main>
       <footer className="site-footer container-shell"><a href="#" className="footer-brand">hairshow.</a><span>© {new Date().getFullYear()} Hairshow Parrucchieri</span><SocialLinks /></footer>
       {media && <div className="media-overlay" role="dialog" aria-modal="true" aria-label={media.title} onClick={() => setMedia(null)}><Button autoFocus variant="inverse" size="icon" className="media-close" aria-label="Chiudi" onClick={() => setMedia(null)}><X /></Button><img src={media.url} alt={media.title} onClick={e => e.stopPropagation()} /></div>}
