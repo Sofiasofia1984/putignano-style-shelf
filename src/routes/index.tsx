@@ -17,7 +17,6 @@ import bob from "@/assets/look-bob.jpg.asset.json";
 import contrast from "@/assets/look-contrast.jpg.asset.json";
 import sleekCopper from "@/assets/look-copper-sleek.jpg.asset.json";
 import braids from "@/assets/look-braids.jpg.asset.json";
-import barberTeam from "@/assets/barbershop-team.jpg.asset.json";
 import barberStyling from "@/assets/barbershop-styling.jpg.asset.json";
 import barberSession from "@/assets/barbershop-session.jpg.asset.json";
 import barberFade from "@/assets/barber-fade.jpg.asset.json";
