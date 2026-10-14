@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ArrowLeft, ArrowUpRight, MapPin, ShoppingBag, MessageCircle, Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/social-links";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { ProductDialog } from "@/components/product-dialog";
 import { products } from "@/lib/products";
 import { salon, whatsappUrl } from "@/lib/salon";
 import brand from "@/assets/brand.jpg.asset.json";
@@ -56,6 +56,6 @@ function Products() {
       <section className="section about-band"><div className="container-shell about-layout"><img src={lineupSecond.url} alt="La selezione di prodotti styling Hair Show Professional in salone" className="product-lineup" loading="lazy" /><div className="about-copy"><span className="eyebrow">Il consiglio giusto, di persona</span><h2>Il tuo rituale.<br />La nostra cura.</h2><p>Ogni capello ha esigenze diverse. Ti aspettiamo da Hairshow per scegliere insieme la cura più adatta a te.</p><p>{salon.address}<br />{salon.opening}</p><Button asChild variant="link" className="p-0 mt-4"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></div></section>
     </main>
     <footer className="site-footer container-shell"><Link to="/" className="footer-brand">hairshow.</Link><span>© {new Date().getFullYear()} Hairshow Parrucchieri</span><SocialLinks /></footer>
-    <Dialog open={selected !== null} onOpenChange={open => { if (!open) setSelected(null); }}><DialogContent className="product-dialog">{selected && <><img className="product-detail-photo" src={selected.images[imageIndex]} alt={selected.name} /><div>{selected.images.length > 1 && <div className="product-thumbnails">{selected.images.map((url, index) => <Button variant="outline" key={url} aria-label={`Foto ${index + 1} di ${selected.name}`} aria-pressed={imageIndex === index} onClick={() => setImageIndex(index)}><img src={url} alt="" /></Button>)}</div>}<DialogTitle>{selected.name}</DialogTitle><DialogDescription className="product-detail-description">{selected.description}</DialogDescription><p className="product-price">Prezzo in salone · Solo ritiro</p><Button variant="editorial" onClick={() => { changeQuantity(selected.id, 1); setSelected(null); }}><Plus /> Aggiungi alla selezione</Button></div></>}</DialogContent></Dialog>
+    <ProductDialog open={selected !== null} onClose={() => setSelected(null)}>{selected && <><img className="product-detail-photo" src={selected.images[imageIndex]} alt={selected.name} /><div>{selected.images.length > 1 && <div className="product-thumbnails">{selected.images.map((url, index) => <Button variant="outline" key={url} aria-label={`Foto ${index + 1} di ${selected.name}`} aria-pressed={imageIndex === index} onClick={() => setImageIndex(index)}><img src={url} alt="" /></Button>)}</div>}<h2 id="product-dialog-title">{selected.name}</h2><p id="product-dialog-description" className="product-detail-description">{selected.description}</p><p className="product-price">Prezzo in salone · Solo ritiro</p><Button variant="editorial" onClick={() => { changeQuantity(selected.id, 1); setSelected(null); }}><Plus /> Aggiungi alla selezione</Button></div></>}</ProductDialog>
   </>;
 }
