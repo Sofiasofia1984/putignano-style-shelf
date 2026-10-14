@@ -44,14 +44,16 @@ const looks = [
   { image: color.url, title: "Un colore che ti racconta", category: "Colore", detail: "Riflessi vivaci · Personalità" },
   { image: braids.url, title: "Geometrie intrecciate", category: "Styling", detail: "Trecce definite · Intrecci su misura" },
   { image: waves.url, title: "Biondo in movimento", category: "Colore", detail: "Sfumature luminose · Onde morbide" },
-  { image: barberStyling.url, title: "Il rituale barbershop", category: "Barbershop", detail: "Il lavoro in salone · Cura dei dettagli" },
   { image: bob.url, title: "Il carattere di un bob", category: "Taglio", detail: "Taglio corto · Texture naturale" },
   { image: updo.url, title: "Eleganza intrecciata", category: "Styling", detail: "Raccolto · Dettagli che fanno la differenza" },
   { image: sleekCopper.url, title: "Rame, pura luce", category: "Colore", detail: "Riflessi caldi · Una linea setosa" },
-  { image: barberSession.url, title: "Lo stile si costruisce", category: "Barbershop", detail: "Un momento di cura · Insieme in salone" },
   { image: straight.url, title: "Luce, linea, essenzialità", category: "Taglio", detail: "Taglio geometrico · Biondo freddo" },
   { image: copper.url, title: "Riflessi di rame", category: "Colore", detail: "Tonalità calde · Onde leggere" },
-  { image: barberTeam.url, title: "Passione condivisa", category: "Barbershop", detail: "Il team al lavoro · Hairshow" },
+];
+const barbershop = [
+  { image: barberStyling.url, title: "Il rituale barbershop", detail: "Il lavoro in salone · Cura dei dettagli" },
+  { image: barberSession.url, title: "Lo stile si costruisce", detail: "Un momento di cura · Insieme in salone" },
+  { image: barberTeam.url, title: "Passione condivisa", detail: "Il team al lavoro · Hairshow" },
 ];
 const films = [
   { url: filmOne.url, poster: posterOne.url, title: "Il movimento del biondo" },
@@ -76,7 +78,7 @@ function Index() {
       <header className="site-header container-shell">
         <a href="#" aria-label="Hairshow, inizio pagina"><img className="brand-image" src={brand.url} alt="Hairshow Parrucchieri" /></a>
         <nav aria-label="Navigazione principale" className={`nav-links ${menuOpen ? "open" : ""}`}>
-          {[["Il salone", "salone"], ["I nostri lavori", "lavori"], ["In movimento", "video"], ["Contatti", "contatti"]].map(([label,id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+          {[["Il salone", "salone"], ["I nostri lavori", "lavori"], ["Barbershop", "barbershop"], ["In movimento", "video"], ["Contatti", "contatti"]].map(([label,id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
           <Link to="/prodotti" onClick={() => setMenuOpen(false)}>Prodotti <ArrowUpRight size={12} className="inline" /></Link>
         </nav>
         <Button asChild variant="editorial" className="desktop-booking"><a href="#contatti">Vieni a trovarci <ArrowUpRight /></a></Button>
@@ -88,7 +90,7 @@ function Index() {
           <div className="hero-content container-shell">
             <div className="reveal">
               <div className="location-line"><span className="location-dot" /> PUTIGNANO, PUGLIA</div>
-              <h1>hairshow.</h1>
+              <h1>Hairshow.</h1>
               <p className="hero-subtitle">Parrucchieri · Artigiani del tuo stile</p>
               <p className="hero-description">La tua personalità. Il nostro stile.<br />Un nuovo modo di sentirti te.</p>
               <div className="hero-actions">
@@ -102,14 +104,15 @@ function Index() {
         <div className="service-strip container-shell"><b>Taglio & styling</b><span>✳</span><b>Colore & schiariture</b><span>✳</span><b>Barbershop</b><span>✳</span><b>Acconciature</b><span>✳</span><b>Cura del capello</b></div>
         <section id="lavori" className="section container-shell">
           <div className="section-heading"><div><span className="eyebrow">01 / Il nostro portfolio</span><h2>Ogni look, una storia.</h2></div><p>Capelli reali, personalità uniche.<br />Una selezione dei nostri lavori, fatti con passione.</p></div>
-          <div className="filter-row" aria-label="Filtra i lavori">{["Tutti", "Taglio", "Colore", "Styling", "Barbershop"].map(f => <Button key={f} variant="ghost" data-active={filter === f} aria-pressed={filter === f} onClick={() => setFilter(f)}>{f}</Button>)}</div>
+          <div className="filter-row" aria-label="Filtra i lavori">{["Tutti", "Taglio", "Colore", "Styling"].map(f => <Button key={f} variant="ghost" data-active={filter === f} aria-pressed={filter === f} onClick={() => setFilter(f)}>{f}</Button>)}</div>
           <div className="works-grid">{looks.filter(l => filter === "Tutti" || l.category === filter).map(l => <Button variant="ghost" className="work-item" key={l.title} aria-label={`Apri foto: ${l.title}`} onClick={() => setMedia({ url: l.image, title: l.title })}><div className="w-full"><div className="work-image"><img src={l.image} alt={l.title} loading="lazy" /></div><div className="work-caption"><div><h3>{l.title}</h3><p>{l.category}</p></div><ArrowUpRight size={18} /></div></div></Button>)}</div>
         </section>
+        <section id="barbershop" className="section barbershop-band"><div className="container-shell"><div className="section-heading"><div><span className="eyebrow">03 / Barbershop</span><h2>Il rito del barbiere.</h2></div><p>Precisione, cura e tradizione.<br />Il nostro angolo barbershop, dedicato a lui.</p></div><div className="works-grid barbershop-grid">{barbershop.map(l => <Button variant="ghost" className="work-item" key={l.title} aria-label={`Apri foto: ${l.title}`} onClick={() => setMedia({ url: l.image, title: l.title })}><div className="w-full"><div className="work-image"><img src={l.image} alt={l.title} loading="lazy" /></div><div className="work-caption"><div><h3>{l.title}</h3><p>{l.detail}</p></div><ArrowUpRight size={18} /></div></div></Button>)}</div></div></section>
         <section id="salone" className="section about-band"><div className="container-shell about-layout"><img src={team.url} className="about-photo" alt="Il team Hairshow insieme in salone" loading="lazy" /><div className="about-copy"><span className="eyebrow">02 / Piacere, Hairshow</span><h2>Le mani, la passione.<br />Il tuo prossimo look.</h2><p>Ci piace ascoltarti, conoscere il tuo stile e dare forma a ciò che ti fa stare bene. Dal taglio al colore, ogni dettaglio è un modo per esprimere chi sei.</p><p>A Putignano, Hairshow è il nostro spazio di creatività. E il tuo momento da dedicare a te.</p><p className="signature">IL TEAM HAIRSHOW — PUTIGNANO</p><Button asChild variant="link" className="p-0 mt-4"><a href="#contatti">Ci vediamo in salone <ArrowUpRight /></a></Button></div></div></section>
-        <section id="video" className="section container-shell"><div className="section-heading"><div><span className="eyebrow">03 / Hairshow in movimento</span><h2>Lo stile non si ferma.</h2></div><p>Riflessi, texture e movimento.<br />I nostri lavori, da un'altra prospettiva.</p></div><div className="video-grid">{films.map(f => <SalonVideo key={f.url} {...f} />)}</div></section>
-        <section id="contatti" className="section contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">04 / Ti aspettiamo</span><h2>Il tuo prossimo look<br />inizia qui.</h2><p>Hairshow Parrucchieri<br />{salon.address}<br />{salon.opening}</p><SocialLinks /></div><div className="contact-actions"><Button asChild variant="inverse"><a href={whatsappUrl("Ciao Hairshow! Vorrei informazioni per un appuntamento in salone.")} target="_blank" rel="noopener noreferrer"><MessageCircle /> Scrivici su WhatsApp <ArrowUpRight /></a></Button><Button asChild variant="glass"><a href={`tel:${salon.phone}`}><Phone /> {salon.phoneLabel}</a></Button><Button asChild variant="glass"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></div></section>
+        <section id="video" className="section container-shell"><div className="section-heading"><div><span className="eyebrow">04 / Hairshow in movimento</span><h2>Lo stile non si ferma.</h2></div><p>Riflessi, texture e movimento.<br />I nostri lavori, da un'altra prospettiva.</p></div><div className="video-grid">{films.map(f => <SalonVideo key={f.url} {...f} />)}</div></section>
+        <section id="contatti" className="section contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">05 / Ti aspettiamo</span><h2>Il tuo prossimo look<br />inizia qui.</h2><p>Hairshow Parrucchieri<br />{salon.address}<br />{salon.opening}</p><SocialLinks /></div><div className="contact-actions"><Button asChild variant="inverse"><a href={whatsappUrl("Ciao Hairshow! Vorrei informazioni per un appuntamento in salone.")} target="_blank" rel="noopener noreferrer"><MessageCircle /> Scrivici su WhatsApp <ArrowUpRight /></a></Button><Button asChild variant="glass"><a href={`tel:${salon.phone}`}><Phone /> {salon.phoneLabel}</a></Button><Button asChild variant="glass"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></div></section>
       </main>
-      <footer className="site-footer container-shell"><a href="#" className="footer-brand">hairshow.</a><span>© {new Date().getFullYear()} Hairshow Parrucchieri</span><SocialLinks /></footer>
+      <footer className="site-footer container-shell"><a href="#" className="footer-brand">Hairshow.</a><span>© {new Date().getFullYear()} Hairshow Parrucchieri</span><SocialLinks /></footer>
       {media && <div className="media-overlay" role="dialog" aria-modal="true" aria-label={media.title} onClick={() => setMedia(null)}><Button autoFocus variant="inverse" size="icon" className="media-close" aria-label="Chiudi" onClick={() => setMedia(null)}><X /></Button><img src={media.url} alt={media.title} onClick={e => e.stopPropagation()} /></div>}
     </>
   );
