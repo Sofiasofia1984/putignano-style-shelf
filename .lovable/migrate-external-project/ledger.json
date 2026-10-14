@@ -1,0 +1,11 @@
+{
+  "scope": "Selective content import from supplied design archive; preserve existing TanStack website, not a full application migration",
+  "capabilities": [
+    {"capability":"Product catalog photos and descriptions","source":"site/products.js and site/img/prod-*.webp","outcome":"Imported four products and galleries; verified loaded images, detail gallery and quantity selection at desktop and mobile sizes","status":"verified","next_action":null},
+    {"capability":"Contact details and WhatsApp","source":"site/index.html and site/products.js","outcome":"Imported supplied contacts; verified prefilled WhatsApp recipient, product names, quantities and pickup address. Actual message sending remains a customer action in WhatsApp.","status":"verified","next_action":null},
+    {"capability":"Source shipping option","source":"site/products.js","outcome":"Not imported: user explicitly requires salon pickup only","status":"excluded","next_action":null},
+    {"capability":"Source static catalog editor and local cart","source":"site/admin.html and site/app.js","outcome":"Outside selective content import; do not replace existing site or copy unrequested management functionality","status":"excluded","next_action":null},
+    {"capability":"Barbershop imagery","source":"Uploaded original images and design archive","outcome":"Inspected both contact sheets: salon team and women's styles only, no identifiable barbershop work","status":"blocked","next_action":"User to upload original barbershop photos"},
+    {"capability":"Placeholder domain, VAT ID and reviews","source":"site/index.html","outcome":"Do not copy placeholder URLs, fabricated reviews or missing legal identifiers","status":"excluded","next_action":null}
+  ]
+}
