@@ -78,8 +78,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .work-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .work-item:hover img { transform: scale(1.035); }
 .work-item:has(.work-caption p):focus-visible { outline-offset: 4px; }
-.work-item:has(img[src*="barbershop"]) .work-image { aspect-ratio: 4 / 5; }
-.work-item img[src*="barbershop"] { object-fit: contain; }
 .work-caption { display: flex; justify-content: space-between; align-items: center; padding-block: 15px; width: 100%; }
 .work-caption h3 { font-size: 13px; font-weight: 500; margin: 0 0 5px; }
 .work-caption p { font-size: 10px; color: var(--muted-foreground); margin: 0; }
