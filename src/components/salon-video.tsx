@@ -1,10 +1,14 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function SalonVideo({ url, poster, title }: { url: string; poster: string; title: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) setPlaying(!video.paused);
+  }, []);
   const toggle = () => {
     const video = videoRef.current;
     if (!video) return;
