@@ -1,24 +1,101 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, ArrowDown, MapPin, Menu, X, Play, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import brand from "@/assets/brand.jpg.asset.json";
+import hero from "@/assets/hero.jpg.asset.json";
+import team from "@/assets/team.jpg.asset.json";
+import straight from "@/assets/look-straight.jpg.asset.json";
+import waves from "@/assets/look-waves.jpg.asset.json";
+import updo from "@/assets/look-updo.jpg.asset.json";
+import color from "@/assets/look-color.jpg.asset.json";
+import copper from "@/assets/look-copper.jpg.asset.json";
+import bob from "@/assets/look-bob.jpg.asset.json";
+import filmOne from "@/assets/film-one.mp4.asset.json";
+import filmTwo from "@/assets/film-two.mp4.asset.json";
+import filmThree from "@/assets/film-three.mp4.asset.json";
+import posterOne from "@/assets/film-10.jpg.asset.json";
+import posterTwo from "@/assets/film-11.jpg.asset.json";
+import posterThree from "@/assets/film-13.jpg.asset.json";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({ meta: [
+    { title: "Hairshow Parrucchieri | Il tuo stile, a Putignano" },
+    { name: "description", content: "Hairshow Parrucchieri a Putignano. Scopri tagli, colori e acconciature attraverso le foto e i video dei nostri lavori." },
+    { property: "og:title", content: "Hairshow Parrucchieri — Putignano" },
+    { property: "og:description", content: "La tua personalità. Il nostro stile. Scopri i lavori del salone Hairshow a Putignano." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const looks = [
+  { image: waves.url, title: "Biondo in movimento", category: "Colore", detail: "Sfumature luminose · Onde morbide" },
+  { image: bob.url, title: "Il carattere di un bob", category: "Taglio", detail: "Taglio corto · Texture naturale" },
+  { image: updo.url, title: "Eleganza intrecciata", category: "Styling", detail: "Raccolto · Dettagli che fanno la differenza" },
+  { image: straight.url, title: "Luce, linea, essenzialità", category: "Taglio", detail: "Taglio geometrico · Biondo freddo" },
+  { image: color.url, title: "Un colore che ti racconta", category: "Colore", detail: "Riflessi vivaci · Personalità" },
+  { image: copper.url, title: "Riflessi di rame", category: "Colore", detail: "Tonalità calde · Onde leggere" },
+];
+const films = [
+  { url: filmOne.url, poster: posterOne.url, title: "Il movimento del biondo" },
+  { url: filmTwo.url, poster: posterTwo.url, title: "Sfumature di rame" },
+  { url: filmThree.url, poster: posterThree.url, title: "Lo stile prende vita" },
+];
+const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Hairshow+Parrucchieri+Putignano";
+
 function Index() {
+  const [filter, setFilter] = useState("Tutti");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [media, setMedia] = useState<{ url: string; title: string; video?: boolean } | null>(null);
+  useEffect(() => {
+    if (!media) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const close = (e: KeyboardEvent) => { if (e.key === "Escape") setMedia(null); };
+    window.addEventListener("keydown", close);
+    return () => { document.body.style.overflow = previous; window.removeEventListener("keydown", close); };
+  }, [media]);
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <header className="site-header container-shell">
+        <a href="#" aria-label="Hairshow, inizio pagina"><img className="brand-image" src={brand.url} alt="Hairshow Parrucchieri" /></a>
+        <nav aria-label="Navigazione principale" className={`nav-links ${menuOpen ? "open" : ""}`}>
+          {[["Il salone", "salone"], ["I nostri lavori", "lavori"], ["In movimento", "video"], ["Contatti", "contatti"]].map(([label,id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+        </nav>
+        <Button asChild variant="editorial" className="desktop-booking"><a href="#contatti">Vieni a trovarci <ArrowUpRight /></a></Button>
+        <Button variant="ghost" size="icon" className="mobile-menu" aria-label={menuOpen ? "Chiudi menu" : "Apri menu"} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
+      </header>
+      <main>
+        <section className="hero">
+          <img className="hero-photo" src={hero.url} alt="Taglio bob biondo con onde morbide realizzato da Hairshow" fetchPriority="high" />
+          <div className="hero-content container-shell">
+            <div className="reveal">
+              <div className="location-line"><span className="location-dot" /> PUTIGNANO, PUGLIA</div>
+              <h1>hairshow.</h1>
+              <p className="hero-subtitle">Parrucchieri · Artigiani del tuo stile</p>
+              <p className="hero-description">La tua personalità. Il nostro stile.<br />Un nuovo modo di sentirti te.</p>
+              <div className="hero-actions">
+                <Button asChild variant="inverse"><a href="#lavori">Scopri i nostri lavori <ArrowUpRight /></a></Button>
+                <Button asChild variant="glass"><a href="#salone">Il salone <ArrowRight /></a></Button>
+              </div>
+            </div>
+            <div className="hero-footer"><span>PASSIONE, CREATIVITÀ, CURA. OGNI GIORNO.</span><a href="#lavori">LASCIATI ISPIRARE <ArrowDown size={14} /></a></div>
+          </div>
+        </section>
+        <div className="service-strip container-shell"><b>Taglio & styling</b><span>✳</span><b>Colore & schiariture</b><span>✳</span><b>Acconciature</b><span>✳</span><b>Cura del capello</b></div>
+        <section id="lavori" className="section container-shell">
+          <div className="section-heading"><div><span className="eyebrow">01 / Il nostro portfolio</span><h2>Ogni look, una storia.</h2></div><p>Capelli reali, personalità uniche.<br />Una selezione dei nostri lavori, fatti con passione.</p></div>
+          <div className="filter-row" aria-label="Filtra i lavori">{["Tutti", "Taglio", "Colore", "Styling"].map(f => <Button key={f} variant="ghost" data-active={filter === f} aria-pressed={filter === f} onClick={() => setFilter(f)}>{f}</Button>)}</div>
+          <div className="works-grid">{looks.filter(l => filter === "Tutti" || l.category === filter).map(l => <Button variant="ghost" className="work-item" key={l.title} aria-label={`Apri foto: ${l.title}`} onClick={() => setMedia({ url: l.image, title: l.title })}><div className="w-full"><div className="work-image"><img src={l.image} alt={l.title} loading="lazy" /></div><div className="work-caption"><div><h3>{l.title}</h3><p>{l.category}</p></div><ArrowUpRight size={18} /></div></div></Button>)}</div>
+        </section>
+        <section id="salone" className="section about-band"><div className="container-shell about-layout"><img src={team.url} className="about-photo" alt="Il team Hairshow insieme in salone" loading="lazy" /><div className="about-copy"><span className="eyebrow">02 / Piacere, Hairshow</span><h2>Le mani, la passione.<br />Il tuo prossimo look.</h2><p>Ci piace ascoltarti, conoscere il tuo stile e dare forma a ciò che ti fa stare bene. Dal taglio al colore, ogni dettaglio è un modo per esprimere chi sei.</p><p>A Putignano, Hairshow è il nostro spazio di creatività. E il tuo momento da dedicare a te.</p><p className="signature">IL TEAM HAIRSHOW — PUTIGNANO</p><Button asChild variant="link" className="p-0 mt-4"><a href="#contatti">Ci vediamo in salone <ArrowUpRight /></a></Button></div></div></section>
+        <section id="video" className="section container-shell"><div className="section-heading"><div><span className="eyebrow">03 / Hairshow in movimento</span><h2>Lo stile non si ferma.</h2></div><p>Riflessi, texture e movimento.<br />I nostri lavori, da un'altra prospettiva.</p></div><div className="video-grid">{films.map(f => <Button key={f.url} variant="ghost" className="film-button" aria-label={`Guarda video: ${f.title}`} onClick={() => setMedia({ url: f.url, title: f.title, video: true })}><img src={f.poster} alt={f.title} loading="lazy" /><span className="play-circle"><Play size={19} /></span><span className="film-caption">{f.title}</span></Button>)}</div></section>
+        <section id="contatti" className="section contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">04 / Ti aspettiamo</span><h2>Il tuo prossimo look<br />inizia qui.</h2><p>Hairshow Parrucchieri<br />Putignano, Puglia</p></div><Button asChild variant="inverse"><a href={mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></section>
+      </main>
+      <footer className="site-footer container-shell"><a href="#" className="footer-brand">hairshow.</a><span>© {new Date().getFullYear()} Hairshow Parrucchieri</span><span>Fatto di stile. A Putignano.</span></footer>
+      {media && <div className="media-overlay" role="dialog" aria-modal="true" aria-label={media.title} onClick={() => setMedia(null)}><Button autoFocus variant="inverse" size="icon" className="media-close" aria-label="Chiudi" onClick={() => setMedia(null)}><X /></Button>{media.video ? <video src={media.url} controls autoPlay playsInline onClick={e => e.stopPropagation()} /> : <img src={media.url} alt={media.title} onClick={e => e.stopPropagation()} />}</div>}
+    </>
   );
 }
