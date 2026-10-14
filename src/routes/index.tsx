@@ -63,7 +63,6 @@ const barbershop = [
   { image: barberFreestyle.url, title: "Freestyle design", detail: "Rasatura artistica · Linee grafiche" },
   { image: barberStyling.url, title: "Il rituale barbershop", detail: "Il lavoro in salone · Cura dei dettagli" },
   { image: barberSession.url, title: "Lo stile si costruisce", detail: "Un momento di cura · Insieme in salone" },
-  { image: barberTeam.url, title: "Passione condivisa", detail: "Il team al lavoro · Hairshow" },
 ];
 const films = [
   { url: filmOne.url, poster: posterOne.url, title: "Il movimento del biondo" },
