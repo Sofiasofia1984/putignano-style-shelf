@@ -14,7 +14,7 @@ import lineupSecond from "@/assets/product-linea2.webp.asset.json";
 
 export const Route = createFileRoute("/prodotti")({
   head: () => ({ meta: [
-    { title: "Prodotti | Hairshow Parrucchieri Putignano" },
+    { title: "Prodotti per capelli a Putignano | Hairshow Parrucchieri" },
     { name: "description", content: "Clay Pomade, Pomade Strong, Dust Wax e Fiber Wax Hair Show Professional. Prenota su WhatsApp e ritira in Via Noci 113 a Putignano." },
     { property: "og:title", content: "Prodotti Hairshow — Ritiro in salone" },
     { property: "og:description", content: "La cura dei tuoi capelli continua a casa. Scopri i prodotti del salone Hairshow a Putignano." },
