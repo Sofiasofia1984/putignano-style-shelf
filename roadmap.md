@@ -12,3 +12,4 @@
 - [x] Show the team before the products catalog.
 - [x] Review SEO readiness and explain domain purchase and publishing.
 - [ ] Connect the existing Google Business Profile — awaiting Google account authorization and published website URL.
+- [x] Explain which legal details the website builder must obtain from the salon owner and who approves the privacy information.
