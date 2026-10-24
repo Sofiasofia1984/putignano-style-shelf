@@ -3,8 +3,12 @@
 - [x] Add the products page and salon-pickup information.
 - [x] Make salon videos autoplay silently with playback controls.
 - [x] Add official Facebook, Instagram and TikTok links on both pages.
-- [ ] Add the three newly supplied barbershop photos and Barbershop service/filter.
-- [ ] Refresh and expand the “Ogni look, una storia” selection with distinctive original work.
-- [ ] Verify social links lead directly to the salon profiles.
+- [x] Add original barbershop photos in a dedicated section and Barbershop service.
+- [x] Refresh and expand the “Ogni look, una storia” selection with distinctive original work.
+- [x] Use direct salon profile URLs for social links.
 - [x] Import product photos, descriptions and relevant salon details from the supplied design archive.
 - [x] Activate WhatsApp reservation links using the recipient supplied in the design archive.
+- [x] Remove one near-duplicate Barbershop photo.
+- [x] Show the team before the products catalog.
+- [x] Review SEO readiness and explain domain purchase and publishing.
+- [ ] Connect the existing Google Business Profile — awaiting Google account authorization and published website URL.

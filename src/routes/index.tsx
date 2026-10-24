@@ -20,7 +20,6 @@ import contrast from "@/assets/look-contrast.jpg.asset.json";
 import sleekCopper from "@/assets/look-copper-sleek.jpg.asset.json";
 import braids from "@/assets/look-braids.jpg.asset.json";
 import barberStyling from "@/assets/barbershop-styling.jpg.asset.json";
-import barberSession from "@/assets/barbershop-session.jpg.asset.json";
 import barberFade from "@/assets/barber-fade.jpg.asset.json";
 import barberFreestyle from "@/assets/barber-freestyle.jpg.asset.json";
 import sposa from "@/assets/look-sposa.jpg.asset.json";
@@ -67,7 +66,6 @@ const barbershop = [
   { image: barberFade.url, title: "Sfumatura perfetta", detail: "Fade platino · Precisione al millimetro" },
   { image: barberFreestyle.url, title: "Freestyle design", detail: "Rasatura artistica · Linee grafiche" },
   { image: barberStyling.url, title: "Il rituale barbershop", detail: "Il lavoro in salone · Cura dei dettagli" },
-  { image: barberSession.url, title: "Lo stile si costruisce", detail: "Un momento di cura · Insieme in salone" },
 ];
 const films = [
   { url: filmOne.url, poster: posterOne.url, title: "Il movimento del biondo" },
