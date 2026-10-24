@@ -10,7 +10,7 @@ import { products } from "@/lib/products";
 import { salon, whatsappUrl } from "@/lib/salon";
 import brand from "@/assets/brand.jpg.asset.json";
 import lineup from "@/assets/product-linea1.webp.asset.json";
-import lineupSecond from "@/assets/product-linea2.webp.asset.json";
+import team from "@/assets/team.jpg.asset.json";
 
 export const Route = createFileRoute("/prodotti")({
   head: () => ({ meta: [
@@ -44,6 +44,7 @@ function Products() {
         <p>Pomate, wax e polveri per il tuo stile. Anche a casa.</p>
         <div className="pickup-label"><ShoppingBag size={15} /> Solo ritiro in salone · Putignano</div></div>
       </section>
+      <section id="personale" className="section about-band"><div className="container-shell about-layout"><img src={team.url} alt="Il team Hairshow insieme in salone" className="about-photo" loading="lazy" /><div className="about-copy"><span className="eyebrow">Piacere, Hairshow</span><h2>Le mani, la passione.<br />Il tuo prossimo look.</h2><p>Ci piace ascoltarti, conoscere il tuo stile e dare forma a ciò che ti fa stare bene. Dal taglio al colore, ogni dettaglio è un modo per esprimere chi sei.</p><p>Ti aspettiamo da Hairshow per scegliere insieme la cura più adatta a te.</p><p className="signature">IL TEAM HAIRSHOW — PUTIGNANO</p><p>{salon.address}<br />{salon.opening}</p><Button asChild variant="link" className="p-0 mt-4"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></div></section>
       <section className="products-catalog container-shell" aria-label="Catalogo prodotti">
         <div className="section-heading"><h2>I nostri prodotti</h2><span className="eyebrow">Nessuna spedizione</span></div>
         <div className="product-grid">{products.map(product => <article className="product-item" key={product.id}>
@@ -55,7 +56,7 @@ function Products() {
         {chosen.length > 0 && <section className="reservation-summary" aria-label="La tua prenotazione"><h2>La tua selezione</h2><ul>{chosen.map(p => <li key={p.id}><span>{quantities[p.id]} × {p.name}</span><Button variant="ghost" size="icon" aria-label={`Rimuovi ${p.name}`} onClick={() => setQuantities(current => ({ ...current, [p.id]: 0 }))}><Trash2 /></Button></li>)}</ul><p>Prezzi e disponibilità da confermare con il salone. Nessun pagamento online.</p><Button asChild variant="editorial"><a href={whatsappUrl(message)} target="_blank" rel="noopener noreferrer"><MessageCircle /> Prenota su WhatsApp <ArrowUpRight /></a></Button></section>}
         <div className="pickup-note"><MessageCircle size={19} /><div><h3>Prenotazione e ritiro</h3><p>Invia la tua richiesta su WhatsApp: il salone confermerà prezzi, disponibilità e ritiro. Ritira in Via Noci 113, Putignano. Nessuna spedizione.</p></div></div>
       </section>
-      <section className="section about-band"><div className="container-shell about-layout"><img src={lineupSecond.url} alt="La selezione di prodotti styling Hair Show Professional in salone" className="product-lineup" loading="lazy" /><div className="about-copy"><span className="eyebrow">Il consiglio giusto, di persona</span><h2>Il tuo rituale.<br />La nostra cura.</h2><p>Ogni capello ha esigenze diverse. Ti aspettiamo da Hairshow per scegliere insieme la cura più adatta a te.</p><p>{salon.address}<br />{salon.opening}</p><Button asChild variant="link" className="p-0 mt-4"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></div><div className="container-shell"><SalonMap className="contact-map" /></div></section>
+      <div className="container-shell"><SalonMap className="contact-map" /></div>
     </main>
     <SiteFooter />
     <ProductDialog open={selected !== null} onClose={() => setSelected(null)}>{selected && <><img className="product-detail-photo" src={selected.images[imageIndex]} alt={selected.name} /><div>{selected.images.length > 1 && <div className="product-thumbnails">{selected.images.map((url, index) => <Button variant="outline" key={url} aria-label={`Foto ${index + 1} di ${selected.name}`} aria-pressed={imageIndex === index} onClick={() => setImageIndex(index)}><img src={url} alt="" /></Button>)}</div>}<h2 id="product-dialog-title">{selected.name}</h2><p id="product-dialog-description" className="product-detail-description">{selected.description}</p><p className="product-price">Prezzo in salone · Solo ritiro</p><Button variant="editorial" onClick={() => { changeQuantity(selected.id, 1); setSelected(null); }}><Plus /> Aggiungi alla selezione</Button></div></>}</ProductDialog>
