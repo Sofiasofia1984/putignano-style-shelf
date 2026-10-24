@@ -8,7 +8,7 @@
 - [x] Use direct salon profile URLs for social links.
 - [x] Import product photos, descriptions and relevant salon details from the supplied design archive.
 - [x] Activate WhatsApp reservation links using the recipient supplied in the design archive.
-- [ ] Remove one near-duplicate Barbershop photo.
-- [ ] Show the team before the products catalog.
-- [ ] Review SEO readiness and explain domain purchase and publishing.
+- [x] Remove one near-duplicate Barbershop photo.
+- [x] Show the team before the products catalog.
+- [x] Review SEO readiness and explain domain purchase and publishing.
 - [ ] Connect the existing Google Business Profile — awaiting Google account authorization and published website URL.
