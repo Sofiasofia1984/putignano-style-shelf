@@ -226,3 +226,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .legal-page h1 { font-size: clamp(36px, 6vw, 64px); margin: 32px 0 24px; }
 .legal-page h2 { font-size: 18px; font-weight: 600; margin: 28px 0 8px; }
 .legal-page p { color: var(--muted-foreground); line-height: 1.7; }
+
+.faq-list { display: grid; gap: 0; border-top: 1px solid var(--border); }
+.faq-list details { border-bottom: 1px solid var(--border); padding: 20px 0; }
+.faq-list summary { cursor: pointer; font-size: 17px; font-weight: 600; }
+.faq-list p { margin: 12px 0 0; opacity: .75; line-height: 1.7; }

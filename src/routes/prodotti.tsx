@@ -20,7 +20,11 @@ export const Route = createFileRoute("/prodotti")({
     { property: "og:description", content: "La cura dei tuoi capelli continua a casa. Scopri i prodotti del salone Hairshow a Putignano." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
-  ] }),
+    { property: "og:url", content: "https://putignano-style-shelf.lovable.app/prodotti" },
+    { property: "og:image", content: `https://putignano-style-shelf.lovable.app${lineup.url}` },
+    { name: "twitter:image", content: `https://putignano-style-shelf.lovable.app${lineup.url}` },
+  ],
+  links: [{ rel: "canonical", href: "https://putignano-style-shelf.lovable.app/prodotti" }] }),
   component: Products,
 });
 
@@ -54,7 +58,7 @@ function Products() {
           {(quantities[product.id] ?? 0) > 0 ? <div className="quantity-control" aria-label={`Quantità ${product.name}`}><Button variant="outline" size="icon" aria-label={`Riduci ${product.name}`} onClick={() => changeQuantity(product.id, -1)}><Minus /></Button><output aria-live="polite">{quantities[product.id]}</output><Button variant="outline" size="icon" disabled={(quantities[product.id] ?? 0) >= 99} aria-label={`Aumenta ${product.name}`} onClick={() => changeQuantity(product.id, 1)}><Plus /></Button></div> : <Button variant="editorial" onClick={() => changeQuantity(product.id, 1)}><Plus /> Prenota</Button>}
         </article>)}</div>
         {chosen.length > 0 && <section className="reservation-summary" aria-label="La tua prenotazione"><h2>La tua selezione</h2><ul>{chosen.map(p => <li key={p.id}><span>{quantities[p.id]} × {p.name}</span><Button variant="ghost" size="icon" aria-label={`Rimuovi ${p.name}`} onClick={() => setQuantities(current => ({ ...current, [p.id]: 0 }))}><Trash2 /></Button></li>)}</ul><p>Prezzi e disponibilità da confermare con il salone. Nessun pagamento online.</p><Button asChild variant="editorial"><a href={whatsappUrl(message)} target="_blank" rel="noopener noreferrer"><MessageCircle /> Prenota su WhatsApp <ArrowUpRight /></a></Button></section>}
-        <div className="pickup-note"><MessageCircle size={19} /><div><h3>Prenotazione e ritiro</h3><p>Invia la tua richiesta su WhatsApp: il salone confermerà prezzi, disponibilità e ritiro. Ritira in Via Noci 113, Putignano. Nessuna spedizione.</p></div></div>
+        <div className="pickup-note"><MessageCircle size={19} /><div><h3>Prenotazione e ritiro</h3><p>Invia la tua richiesta su WhatsApp: il salone confermerà prezzi, disponibilità e ritiro. Ritira in Via Noci 113, Putignano. Nessuna spedizione. <Link to="/condizioni">Condizioni di vendita</Link>.</p></div></div>
       </section>
       <div className="container-shell"><SalonMap className="contact-map" /></div>
     </main>

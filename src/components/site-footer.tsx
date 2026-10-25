@@ -9,7 +9,7 @@ export function SiteFooter() {
       <Link to="/" className="footer-brand">Hairshow.</Link>
       <span>
         © {new Date().getFullYear()} Hairshow Parrucchieri · <a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer">{salon.address}</a> · <a href={`tel:${salon.phone}`}>{salon.phoneLabel}</a>
-        <br /><Link to="/privacy">Privacy e cookie</Link> · <button type="button" className="footer-link-button" onClick={resetConsent}>Preferenze cookie</button>
+        <br /><Link to="/privacy">Privacy e cookie</Link> · <Link to="/condizioni">Condizioni di vendita</Link> · <button type="button" className="footer-link-button" onClick={resetConsent}>Preferenze cookie</button>
       </span>
       <SocialLinks />
     </footer>
