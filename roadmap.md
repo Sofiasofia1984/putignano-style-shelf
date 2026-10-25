@@ -13,3 +13,7 @@
 - [x] Review SEO readiness and explain domain purchase and publishing.
 - [ ] Connect the existing Google Business Profile — awaiting Google account authorization and published website URL.
 - [x] Explain which legal details the website builder must obtain from the salon owner and who approves the privacy information.
+- [ ] Apply uploaded brief: showcase-only products, shared navigation, phone dialog and mobile contacts.
+- [ ] Update technical SEO, local font, cookie/privacy drafts and authentic review/FAQ section.
+- [ ] Replace product photos and supplied icons — awaiting actual image files.
+- [ ] Complete legal identity and approve policies — awaiting salon owner’s details and review.
