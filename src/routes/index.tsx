@@ -34,7 +34,7 @@ import posterThree from "@/assets/film-13.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-  scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "HairSalon", name: "Hairshow Parrucchieri", telephone: "+39 329 635 6935", address: { "@type": "PostalAddress", streetAddress: "Via Noci 113", postalCode: "70017", addressLocality: "Putignano", addressRegion: "BA", addressCountry: "IT" }, openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday","Wednesday","Thursday","Friday","Saturday"] }], sameAs: ["https://www.instagram.com/hairshow_parrucchieri", "https://www.facebook.com/Hairshowparrucchieri", "https://www.tiktok.com/@hairshow.parrucch"], hasMap: "https://www.google.com/maps/search/?api=1&query=Hair+Show+Via+Noci+113+Putignano" }) }],
+  scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "HairSalon", name: "Hairshow Parrucchieri", telephone: "+39 329 635 6935", address: { "@type": "PostalAddress", streetAddress: "Via Noci 113", postalCode: "70017", addressLocality: "Putignano", addressRegion: "BA", addressCountry: "IT" }, url: "https://putignano-style-shelf.lovable.app/", image: `https://putignano-style-shelf.lovable.app${hero.url}`, openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday","Wednesday","Thursday","Friday","Saturday"] }], sameAs: ["https://www.instagram.com/hairshow_parrucchieri", "https://www.facebook.com/Hairshowparrucchieri", "https://www.tiktok.com/@hairshow.parrucch"], hasMap: "https://www.google.com/maps/search/?api=1&query=Hair+Show+Via+Noci+113+Putignano" }) }],
   meta: [
     { name: "geo.region", content: "IT-BA" },
     { name: "geo.placename", content: "Putignano" },
@@ -44,7 +44,11 @@ export const Route = createFileRoute("/")({
     { property: "og:description", content: "La tua personalità. Il nostro stile. Scopri i lavori del salone Hairshow a Putignano." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
-  ] }),
+    { property: "og:url", content: "https://putignano-style-shelf.lovable.app/" },
+    { property: "og:image", content: `https://putignano-style-shelf.lovable.app${hero.url}` },
+    { name: "twitter:image", content: `https://putignano-style-shelf.lovable.app${hero.url}` },
+  ],
+  links: [{ rel: "canonical", href: "https://putignano-style-shelf.lovable.app/" }] }),
   component: Index,
 });
 
@@ -66,6 +70,13 @@ const barbershop = [
   { image: barberFade.url, title: "Sfumatura perfetta", detail: "Fade platino · Precisione al millimetro" },
   { image: barberFreestyle.url, title: "Freestyle design", detail: "Rasatura artistica · Linee grafiche" },
   { image: barberStyling.url, title: "Il rituale barbershop", detail: "Il lavoro in salone · Cura dei dettagli" },
+];
+const faqs = [
+  ["Dove si trova Hairshow?", "In Via Noci 113, 70017 Putignano (BA). Trovi la mappa in fondo alla pagina."],
+  ["Quando siete aperti?", "Dal martedì al sabato, su prenotazione."],
+  ["Come prenoto un appuntamento?", "Scrivici su WhatsApp o chiamaci al 329 63 56 935."],
+  ["Fate anche barbiere?", "Sì, abbiamo un angolo barbershop dedicato a tagli uomo, sfumature e rasature."],
+  ["Posso comprare i prodotti online?", "Puoi prenotarli su WhatsApp dalla pagina Prodotti e ritirarli in salone. Non facciamo spedizioni né pagamenti online."],
 ];
 const films = [
   { url: filmOne.url, poster: posterOne.url, title: "Il movimento del biondo" },
@@ -102,7 +113,7 @@ function Index() {
           <div className="hero-content container-shell">
             <div className="reveal">
               <div className="location-line"><span className="location-dot" /> PUTIGNANO, PUGLIA</div>
-              <h1>Hairshow.</h1>
+              <h1>Hairshow.<span className="sr-only"> Parrucchieri, parrucchiere e barbiere a Putignano</span></h1>
               <p className="hero-subtitle">Parrucchiere e barbiere a Putignano · Artigiani del tuo stile</p>
               <p className="hero-description">La tua personalità. Il nostro stile.<br />Un nuovo modo di sentirti te.</p>
               <div className="hero-actions">
@@ -114,15 +125,17 @@ function Index() {
           </div>
         </section>
         <div className="service-strip container-shell"><b>Taglio & styling</b><span>✳</span><b>Colore & schiariture</b><span>✳</span><b>Barbershop</b><span>✳</span><b>Acconciature</b><span>✳</span><b>Cura del capello</b></div>
+        <section id="salone" className="section about-band"><div className="container-shell about-layout"><img src={team.url} className="about-photo" alt="Il team Hairshow insieme in salone" loading="lazy" /><div className="about-copy"><span className="eyebrow">01 / Piacere, Hairshow</span><h2>Le mani, la passione.<br />Il tuo prossimo look.</h2><p>Ci piace ascoltarti, conoscere il tuo stile e dare forma a ciò che ti fa stare bene. Dal taglio al colore, ogni dettaglio è un modo per esprimere chi sei.</p><p>A Putignano, Hairshow è il nostro spazio di creatività. E il tuo momento da dedicare a te.</p><p className="signature">IL TEAM HAIRSHOW — PUTIGNANO</p><Button asChild variant="link" className="p-0 mt-4"><a href="#contatti">Ci vediamo in salone <ArrowUpRight /></a></Button></div></div></section>
         <section id="lavori" className="section container-shell">
-          <div className="section-heading"><div><span className="eyebrow">01 / Il nostro portfolio</span><h2>Ogni look, una storia.</h2></div><p>Capelli reali, personalità uniche.<br />Una selezione dei nostri lavori, fatti con passione.</p></div>
+          <div className="section-heading"><div><span className="eyebrow">02 / Il nostro portfolio</span><h2>Ogni look, una storia.</h2></div><p>Capelli reali, personalità uniche.<br />Una selezione dei nostri lavori, fatti con passione.</p></div>
           <div className="filter-row" aria-label="Filtra i lavori">{["Tutti", "Taglio", "Colore", "Styling"].map(f => <Button key={f} variant="ghost" data-active={filter === f} aria-pressed={filter === f} onClick={() => setFilter(f)}>{f}</Button>)}</div>
           <div className="works-grid">{looks.filter(l => filter === "Tutti" || l.category === filter).map(l => <Button variant="ghost" className="work-item" key={l.title} aria-label={`Apri foto: ${l.title}`} onClick={() => setMedia({ url: l.image, title: l.title })}><div className="w-full"><div className="work-image"><img src={l.image} alt={`${l.title} – Hairshow parrucchiere Putignano`} loading="lazy" /></div><div className="work-caption"><div><h3>{l.title}</h3><p>{l.category}</p></div><ArrowUpRight size={18} /></div></div></Button>)}</div>
         </section>
         <section id="barbershop" className="section barbershop-band"><div className="container-shell"><div className="section-heading"><div><span className="eyebrow">03 / Barbershop</span><h2>Il rito del barbiere.</h2></div><p>Precisione, cura e tradizione.<br />Il nostro angolo barbershop, dedicato a lui.</p></div><div className="works-grid barbershop-grid">{barbershop.map(l => <Button variant="ghost" className="work-item" key={l.title} aria-label={`Apri foto: ${l.title}`} onClick={() => setMedia({ url: l.image, title: l.title })}><div className="w-full"><div className="work-image"><img src={l.image} alt={`${l.title} – barbiere a Putignano, Hairshow`} loading="lazy" /></div><div className="work-caption"><div><h3>{l.title}</h3><p>{l.detail}</p></div><ArrowUpRight size={18} /></div></div></Button>)}</div></div></section>
-        <section id="salone" className="section about-band"><div className="container-shell about-layout"><img src={team.url} className="about-photo" alt="Il team Hairshow insieme in salone" loading="lazy" /><div className="about-copy"><span className="eyebrow">02 / Piacere, Hairshow</span><h2>Le mani, la passione.<br />Il tuo prossimo look.</h2><p>Ci piace ascoltarti, conoscere il tuo stile e dare forma a ciò che ti fa stare bene. Dal taglio al colore, ogni dettaglio è un modo per esprimere chi sei.</p><p>A Putignano, Hairshow è il nostro spazio di creatività. E il tuo momento da dedicare a te.</p><p className="signature">IL TEAM HAIRSHOW — PUTIGNANO</p><Button asChild variant="link" className="p-0 mt-4"><a href="#contatti">Ci vediamo in salone <ArrowUpRight /></a></Button></div></div></section>
         <section id="video" className="section container-shell"><div className="section-heading"><div><span className="eyebrow">04 / Hairshow in movimento</span><h2>Lo stile non si ferma.</h2></div><p>Riflessi, texture e movimento.<br />I nostri lavori, da un'altra prospettiva.</p></div><div className="video-grid">{films.map(f => <SalonVideo key={f.url} {...f} />)}</div></section>
-        <section id="contatti" className="section contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">05 / Ti aspettiamo</span><h2>Il tuo prossimo look<br />inizia qui.</h2><p>Hairshow Parrucchieri<br />{salon.address}<br />{salon.opening}</p><SocialLinks /></div><div className="contact-actions"><Button asChild variant="inverse"><a href={whatsappUrl("Ciao Hairshow! Vorrei informazioni per un appuntamento in salone.")} target="_blank" rel="noopener noreferrer"><MessageCircle /> Scrivici su WhatsApp <ArrowUpRight /></a></Button><Button asChild variant="glass"><a href={`tel:${salon.phone}`}><Phone /> {salon.phoneLabel}</a></Button><Button asChild variant="glass"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></div><div className="container-shell"><SalonMap className="contact-map" /></div></section>
+        <section id="recensioni" className="section container-shell"><div className="section-heading"><div><span className="eyebrow">05 / Recensioni</span><h2>Cosa dicono di noi.</h2></div><p>Le opinioni vere dei nostri clienti<br />sono sulla nostra scheda Google.</p></div><div className="hero-actions"><Button asChild variant="editorial"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer">Leggi le recensioni su Google <ArrowUpRight /></a></Button><Button asChild variant="outline"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer">Lascia una recensione <ArrowUpRight /></a></Button></div></section>
+        <section id="faq" className="section container-shell"><div className="section-heading"><div><span className="eyebrow">06 / Domande frequenti</span><h2>Domande frequenti.</h2></div></div><div className="faq-list">{faqs.map(([q, a]) => <details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+        <section id="contatti" className="section contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">07 / Ti aspettiamo</span><h2>Il tuo prossimo look<br />inizia qui.</h2><p>Hairshow Parrucchieri<br />{salon.address}<br />{salon.opening}</p><SocialLinks /></div><div className="contact-actions"><Button asChild variant="inverse"><a href={whatsappUrl("Ciao Hairshow! Vorrei informazioni per un appuntamento in salone.")} target="_blank" rel="noopener noreferrer"><MessageCircle /> Scrivici su WhatsApp <ArrowUpRight /></a></Button><Button asChild variant="glass"><a href={`tel:${salon.phone}`}><Phone /> {salon.phoneLabel}</a></Button><Button asChild variant="glass"><a href={salon.mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin /> Trova il salone <ArrowUpRight /></a></Button></div></div><div className="container-shell"><SalonMap className="contact-map" /></div></section>
       </main>
       <SiteFooter />
       {media && <div className="media-overlay" role="dialog" aria-modal="true" aria-label={media.title} onClick={() => setMedia(null)}><Button autoFocus variant="inverse" size="icon" className="media-close" aria-label="Chiudi" onClick={() => setMedia(null)}><X /></Button><img src={media.url} alt={media.title} onClick={e => e.stopPropagation()} /></div>}

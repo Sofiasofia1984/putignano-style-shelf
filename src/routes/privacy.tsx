@@ -10,7 +10,8 @@ export const Route = createFileRoute("/privacy")({
     { property: "og:description", content: "Come il sito Hairshow tratta dati e cookie." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary" },
-  ] }),
+    { property: "og:url", content: "https://putignano-style-shelf.lovable.app/privacy" },
+  ], links: [{ rel: "canonical", href: "https://putignano-style-shelf.lovable.app/privacy" }] }),
   component: PrivacyPage,
 });
 
@@ -25,7 +26,7 @@ function PrivacyPage() {
         <h2>Dati raccolti</h2>
         <p>Il sito non ha moduli, account né pagamenti online. Quando ci scrivi su WhatsApp o ci chiami, i dati che condividi sono usati solo per rispondere e gestire appuntamenti o il ritiro dei prodotti in salone.</p>
         <h2>Cookie tecnici</h2>
-        <p>Salviamo nel tuo browser solo la tua scelta sulle preferenze cookie. Non usiamo cookie di profilazione né statistiche.</p>
+        <p>Salviamo nel tuo browser solo la tua scelta sulle preferenze cookie (voce «hairshow-consent», conservata finché non la cambi o cancelli i dati del browser). Non usiamo cookie di profilazione né statistiche. I caratteri del sito sono caricati da Google Fonts, che riceve il tuo indirizzo IP.</p>
         <h2>Contenuti di terze parti</h2>
         <p>La mappa di Google Maps viene caricata solo dopo il tuo consenso e può impostare cookie di Google. I link a Instagram, Facebook, TikTok e WhatsApp portano a servizi esterni con proprie informative.</p>
         <h2>I tuoi diritti</h2>

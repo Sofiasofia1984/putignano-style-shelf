@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CondizioniRouteImport } from './routes/condizioni'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProdottiRouteImport } from './routes/prodotti'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
@@ -18,6 +19,11 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CondizioniRoute = CondizioniRouteImport.update({
+  id: '/condizioni',
+  path: '/condizioni',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -43,6 +49,7 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/condizioni': typeof CondizioniRoute
   '/privacy': typeof PrivacyRoute
   '/prodotti': typeof ProdottiRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/condizioni': typeof CondizioniRoute
   '/privacy': typeof PrivacyRoute
   '/prodotti': typeof ProdottiRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/condizioni': typeof CondizioniRoute
   '/privacy': typeof PrivacyRoute
   '/prodotti': typeof ProdottiRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -65,15 +74,34 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy' | '/prodotti' | '/robots.txt' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/condizioni'
+    | '/privacy'
+    | '/prodotti'
+    | '/robots.txt'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy' | '/prodotti' | '/robots.txt' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/condizioni'
+    | '/privacy'
+    | '/prodotti'
+    | '/robots.txt'
+    | '/sitemap.xml'
   id:
-    '__root__' | '/' | '/privacy' | '/prodotti' | '/robots.txt' | '/sitemap.xml'
+    | '__root__'
+    | '/'
+    | '/condizioni'
+    | '/privacy'
+    | '/prodotti'
+    | '/robots.txt'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CondizioniRoute: typeof CondizioniRoute
   PrivacyRoute: typeof PrivacyRoute
   ProdottiRoute: typeof ProdottiRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -87,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/condizioni': {
+      id: '/condizioni'
+      path: '/condizioni'
+      fullPath: '/condizioni'
+      preLoaderRoute: typeof CondizioniRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -122,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CondizioniRoute: CondizioniRoute,
   PrivacyRoute: PrivacyRoute,
   ProdottiRoute: ProdottiRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
