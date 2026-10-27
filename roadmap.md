@@ -18,3 +18,4 @@
 - [ ] Replace product photos and supplied icons — awaiting actual image files.
 - [ ] Complete legal identity and approve policies — awaiting salon owner’s details and review.
 - [x] Replace the “Prenota” button on product cards with a WhatsApp button.
+- [x] Replace the hero “Scopri i nostri lavori” button with a direct-call phone number button.
