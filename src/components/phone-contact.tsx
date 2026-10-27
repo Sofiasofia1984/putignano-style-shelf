@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { salon, whatsappUrl } from "@/lib/salon";
 
 const PhoneContext = createContext<() => void>(() => {});
-export function CallButton({ children = "Chiama", variant = "editorial", className }: { children?: ReactNode; variant?: "editorial" | "inverse" | "glass" | "link" | "outline"; className?: string }) {
+export function CallButton({ children = "Chiama", variant = "editorial", className, size, label }: { children?: ReactNode; variant?: "editorial" | "inverse" | "glass" | "link" | "outline"; className?: string; size?: "icon"; label?: string }) {
   const open = useContext(PhoneContext);
-  return <Button variant={variant} className={className} onClick={open}><Phone size={16} />{children}</Button>;
+  return <Button variant={variant} size={size} className={className} aria-label={label} onClick={open}><Phone size={16} />{children}</Button>;
 }
 export function PhoneProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
