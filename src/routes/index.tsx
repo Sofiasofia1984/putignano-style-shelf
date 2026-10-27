@@ -117,7 +117,7 @@ function Index() {
               <p className="hero-subtitle">Parrucchiere e barbiere a Putignano · Artigiani del tuo stile</p>
               <p className="hero-description">La tua personalità. Il nostro stile.<br />Un nuovo modo di sentirti te.</p>
               <div className="hero-actions">
-                <Button asChild variant="inverse"><a href="#lavori">Scopri i nostri lavori <ArrowUpRight /></a></Button>
+                <Button asChild variant="inverse"><a href={`tel:${salon.phone}`} aria-label={`Chiama il salone al ${salon.phoneLabel}`}><Phone size={16} />{salon.phoneLabel}</a></Button>
                 <Button asChild variant="glass"><a href="#salone">Il salone <ArrowRight /></a></Button>
               </div>
             </div>
