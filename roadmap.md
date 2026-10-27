@@ -17,3 +17,4 @@
 - [ ] Update technical SEO, local font, cookie/privacy drafts and authentic review/FAQ section.
 - [ ] Replace product photos and supplied icons — awaiting actual image files.
 - [ ] Complete legal identity and approve policies — awaiting salon owner’s details and review.
+- [x] Replace the “Prenota” button on product cards with a WhatsApp button.
