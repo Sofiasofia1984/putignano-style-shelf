@@ -7,7 +7,7 @@ import { SalonMap } from "@/components/salon-map";
 import { SiteFooter } from "@/components/site-footer";
 import { ProductDialog } from "@/components/product-dialog";
 import { products } from "@/lib/products";
-import { salon, whatsappUrl } from "@/lib/salon";
+import { salon, whatsappUrl, productWhatsappUrl } from "@/lib/salon";
 import brand from "@/assets/brand.jpg.asset.json";
 import lineup from "@/assets/product-linea1.webp.asset.json";
 import team from "@/assets/team.jpg.asset.json";
@@ -55,7 +55,7 @@ function Products() {
           <Button variant="ghost" className="product-image-button" aria-label={`Dettagli ${product.name}`} onClick={() => { setSelected(product); setImageIndex(0); }}><img src={product.images[0]} alt={`${product.name} Hair Show Professional`} loading="lazy" /><ArrowUpRight /></Button>
           <div className="product-tags">{product.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
           <h3>{product.name}</h3><p>{product.description}</p><span className="product-price">Prezzo in salone</span>
-          {(quantities[product.id] ?? 0) > 0 ? <div className="quantity-control" aria-label={`Quantità ${product.name}`}><Button variant="outline" size="icon" aria-label={`Riduci ${product.name}`} onClick={() => changeQuantity(product.id, -1)}><Minus /></Button><output aria-live="polite">{quantities[product.id]}</output><Button variant="outline" size="icon" disabled={(quantities[product.id] ?? 0) >= 99} aria-label={`Aumenta ${product.name}`} onClick={() => changeQuantity(product.id, 1)}><Plus /></Button></div> : <Button variant="editorial" onClick={() => changeQuantity(product.id, 1)}><Plus /> Prenota</Button>}
+          {(quantities[product.id] ?? 0) > 0 ? <div className="quantity-control" aria-label={`Quantità ${product.name}`}><Button variant="outline" size="icon" aria-label={`Riduci ${product.name}`} onClick={() => changeQuantity(product.id, -1)}><Minus /></Button><output aria-live="polite">{quantities[product.id]}</output><Button variant="outline" size="icon" disabled={(quantities[product.id] ?? 0) >= 99} aria-label={`Aumenta ${product.name}`} onClick={() => changeQuantity(product.id, 1)}><Plus /></Button></div> : <div className="product-actions"><Button asChild variant="editorial"><a href={productWhatsappUrl(product.name)} target="_blank" rel="noopener noreferrer"><MessageCircle size={16} /> WhatsApp</a></Button><Button variant="outline" size="icon" aria-label={`Aggiungi ${product.name} alla selezione`} onClick={() => changeQuantity(product.id, 1)}><Plus /></Button></div>}
         </article>)}</div>
         {chosen.length > 0 && <section className="reservation-summary" aria-label="La tua prenotazione"><h2>La tua selezione</h2><ul>{chosen.map(p => <li key={p.id}><span>{quantities[p.id]} × {p.name}</span><Button variant="ghost" size="icon" aria-label={`Rimuovi ${p.name}`} onClick={() => setQuantities(current => ({ ...current, [p.id]: 0 }))}><Trash2 /></Button></li>)}</ul><p>Prezzi e disponibilità da confermare con il salone. Nessun pagamento online.</p><Button asChild variant="editorial"><a href={whatsappUrl(message)} target="_blank" rel="noopener noreferrer"><MessageCircle /> Prenota su WhatsApp <ArrowUpRight /></a></Button></section>}
         <div className="pickup-note"><MessageCircle size={19} /><div><h3>Prenotazione e ritiro</h3><p>Invia la tua richiesta su WhatsApp: il salone confermerà prezzi, disponibilità e ritiro. Ritira in Via Noci 113, Putignano. Nessuna spedizione. <Link to="/condizioni">Condizioni di vendita</Link>.</p></div></div>
