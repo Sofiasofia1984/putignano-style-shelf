@@ -3,8 +3,6 @@ import waves from "@/assets/look-waves.jpg.asset.json";
 import updo from "@/assets/look-updo.jpg.asset.json";
 import color from "@/assets/look-color.jpg.asset.json";
 import copper from "@/assets/look-copper.jpg.asset.json";
-import bob from "@/assets/look-bob.jpg.asset.json";
-import contrast from "@/assets/look-contrast.jpg.asset.json";
 import sleekCopper from "@/assets/look-copper-sleek.jpg.asset.json";
 import braids from "@/assets/look-braids.jpg.asset.json";
 import sposa from "@/assets/look-sposa.jpg.asset.json";
@@ -24,11 +22,9 @@ export type Category = "Colore" | "Tagli" | "Acconciature" | "Barbershop";
 export type Work = { url: string; title: string; detail: string; category: Category };
 
 export const looks: Work[] = [
-  { url: contrast.url, title: "Contrasti di carattere", category: "Tagli", detail: "Corto dinamico · Ciuffo a contrasto" },
   { url: color.url, title: "Un colore che ti racconta", category: "Colore", detail: "Riflessi vivaci · Personalità" },
   { url: braids.url, title: "Geometrie intrecciate", category: "Acconciature", detail: "Trecce definite · Intrecci su misura" },
   { url: waves.url, title: "Biondo in movimento", category: "Colore", detail: "Sfumature luminose · Onde morbide" },
-  { url: bob.url, title: "Il carattere di un bob", category: "Tagli", detail: "Taglio corto · Texture naturale" },
   { url: updo.url, title: "Eleganza intrecciata", category: "Acconciature", detail: "Raccolto · Dettagli che fanno la differenza" },
   { url: sleekCopper.url, title: "Rame, pura luce", category: "Colore", detail: "Riflessi caldi · Una linea setosa" },
   { url: straight.url, title: "Luce, linea, essenzialità", category: "Tagli", detail: "Taglio geometrico · Biondo freddo" },

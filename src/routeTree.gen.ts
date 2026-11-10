@@ -10,10 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BarbershopRouteImport } from './routes/barbershop'
 import { Route as CondizioniRouteImport } from './routes/condizioni'
+import { Route as ContattiRouteImport } from './routes/contatti'
+import { Route as LavoriRouteImport } from './routes/lavori'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProdottiRouteImport } from './routes/prodotti'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as SaloneRouteImport } from './routes/salone'
+import { Route as ServiziRouteImport } from './routes/servizi'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 
 const IndexRoute = IndexRouteImport.update({
@@ -21,9 +26,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BarbershopRoute = BarbershopRouteImport.update({
+  id: '/barbershop',
+  path: '/barbershop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CondizioniRoute = CondizioniRouteImport.update({
   id: '/condizioni',
   path: '/condizioni',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContattiRoute = ContattiRouteImport.update({
+  id: '/contatti',
+  path: '/contatti',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LavoriRoute = LavoriRouteImport.update({
+  id: '/lavori',
+  path: '/lavori',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -41,6 +61,16 @@ const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
   path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SaloneRoute = SaloneRouteImport.update({
+  id: '/salone',
+  path: '/salone',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiziRoute = ServiziRouteImport.update({
+  id: '/servizi',
+  path: '/servizi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -49,62 +79,97 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/barbershop': typeof BarbershopRoute
   '/condizioni': typeof CondizioniRoute
+  '/contatti': typeof ContattiRoute
+  '/lavori': typeof LavoriRoute
   '/privacy': typeof PrivacyRoute
   '/prodotti': typeof ProdottiRoute
   '/robots.txt': typeof RobotsDottxtRoute
+  '/salone': typeof SaloneRoute
+  '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/barbershop': typeof BarbershopRoute
   '/condizioni': typeof CondizioniRoute
+  '/contatti': typeof ContattiRoute
+  '/lavori': typeof LavoriRoute
   '/privacy': typeof PrivacyRoute
   '/prodotti': typeof ProdottiRoute
   '/robots.txt': typeof RobotsDottxtRoute
+  '/salone': typeof SaloneRoute
+  '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/barbershop': typeof BarbershopRoute
   '/condizioni': typeof CondizioniRoute
+  '/contatti': typeof ContattiRoute
+  '/lavori': typeof LavoriRoute
   '/privacy': typeof PrivacyRoute
   '/prodotti': typeof ProdottiRoute
   '/robots.txt': typeof RobotsDottxtRoute
+  '/salone': typeof SaloneRoute
+  '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/barbershop'
     | '/condizioni'
+    | '/contatti'
+    | '/lavori'
     | '/privacy'
     | '/prodotti'
     | '/robots.txt'
+    | '/salone'
+    | '/servizi'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/barbershop'
     | '/condizioni'
+    | '/contatti'
+    | '/lavori'
     | '/privacy'
     | '/prodotti'
     | '/robots.txt'
+    | '/salone'
+    | '/servizi'
     | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
+    | '/barbershop'
     | '/condizioni'
+    | '/contatti'
+    | '/lavori'
     | '/privacy'
     | '/prodotti'
     | '/robots.txt'
+    | '/salone'
+    | '/servizi'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BarbershopRoute: typeof BarbershopRoute
   CondizioniRoute: typeof CondizioniRoute
+  ContattiRoute: typeof ContattiRoute
+  LavoriRoute: typeof LavoriRoute
   PrivacyRoute: typeof PrivacyRoute
   ProdottiRoute: typeof ProdottiRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SaloneRoute: typeof SaloneRoute
+  ServiziRoute: typeof ServiziRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -117,11 +182,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/barbershop': {
+      id: '/barbershop'
+      path: '/barbershop'
+      fullPath: '/barbershop'
+      preLoaderRoute: typeof BarbershopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/condizioni': {
       id: '/condizioni'
       path: '/condizioni'
       fullPath: '/condizioni'
       preLoaderRoute: typeof CondizioniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contatti': {
+      id: '/contatti'
+      path: '/contatti'
+      fullPath: '/contatti'
+      preLoaderRoute: typeof ContattiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lavori': {
+      id: '/lavori'
+      path: '/lavori'
+      fullPath: '/lavori'
+      preLoaderRoute: typeof LavoriRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -145,6 +231,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/salone': {
+      id: '/salone'
+      path: '/salone'
+      fullPath: '/salone'
+      preLoaderRoute: typeof SaloneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servizi': {
+      id: '/servizi'
+      path: '/servizi'
+      fullPath: '/servizi'
+      preLoaderRoute: typeof ServiziRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -157,10 +257,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BarbershopRoute: BarbershopRoute,
   CondizioniRoute: CondizioniRoute,
+  ContattiRoute: ContattiRoute,
+  LavoriRoute: LavoriRoute,
   PrivacyRoute: PrivacyRoute,
   ProdottiRoute: ProdottiRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
+  SaloneRoute: SaloneRoute,
+  ServiziRoute: ServiziRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport

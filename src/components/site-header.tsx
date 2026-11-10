@@ -1,11 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CallButton } from "@/components/phone-contact";
+import { salon } from "@/lib/salon";
 import brand from "@/assets/brand.jpg.asset.json";
 
-const nav = [["Il salone", "salone"], ["I nostri lavori", "lavori"], ["Barbershop", "barbershop"], ["In movimento", "video"], ["Contatti", "contatti"]] as const;
+const nav = [
+  ["Il salone", "/salone"],
+  ["Servizi", "/servizi"],
+  ["Lavori", "/lavori"],
+  ["Barbershop", "/barbershop"],
+  ["Prodotti", "/prodotti"],
+  ["Contatti", "/contatti"],
+] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -18,13 +25,9 @@ export function SiteHeader() {
   return <header className="site-header container-shell">
     <Link to="/" aria-label="Hairshow, home"><img className="brand-image" src={brand.url} alt="Hairshow Parrucchieri" width="145" height="68" /></Link>
     <nav aria-label="Navigazione principale" className={`nav-links ${open ? "open" : ""}`}>
-      {nav.map(([label, id]) => <a key={id} href={`/#${id}`} onClick={() => setOpen(false)}>{label}</a>)}
-      <Link to="/prodotti" activeProps={{ className: "active" }} onClick={() => setOpen(false)}>Prodotti</Link>
+      {nav.map(([label, to]) => <Link key={to} to={to} activeProps={{ className: "active" }} onClick={() => setOpen(false)}>{label}</Link>)}
     </nav>
-    <div className="header-actions">
-      <CallButton className="desktop-booking" />
-      <CallButton className="mobile-call" size="icon" label="Chiama il salone">{null}</CallButton>
-      <Button variant="ghost" size="icon" className="mobile-menu" aria-expanded={open} aria-label={open ? "Chiudi menu" : "Apri menu"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
-    </div>
+    <Button asChild variant="editorial" className="desktop-booking"><a href={`tel:${salon.phone}`}><Phone size={16} />{salon.phoneLabel}</a></Button>
+    <Button variant="ghost" size="icon" className="mobile-menu" aria-expanded={open} aria-label={open ? "Chiudi menu" : "Apri menu"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
   </header>;
 }
