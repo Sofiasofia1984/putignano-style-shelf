@@ -53,11 +53,9 @@ export const Route = createFileRoute("/")({
 });
 
 const looks = [
-  { image: contrast.url, title: "Contrasti di carattere", category: "Taglio", detail: "Corto dinamico · Ciuffo a contrasto" },
   { image: color.url, title: "Un colore che ti racconta", category: "Colore", detail: "Riflessi vivaci · Personalità" },
   { image: braids.url, title: "Geometrie intrecciate", category: "Styling", detail: "Trecce definite · Intrecci su misura" },
   { image: waves.url, title: "Biondo in movimento", category: "Colore", detail: "Sfumature luminose · Onde morbide" },
-  { image: bob.url, title: "Il carattere di un bob", category: "Taglio", detail: "Taglio corto · Texture naturale" },
   { image: updo.url, title: "Eleganza intrecciata", category: "Styling", detail: "Raccolto · Dettagli che fanno la differenza" },
   { image: sleekCopper.url, title: "Rame, pura luce", category: "Colore", detail: "Riflessi caldi · Una linea setosa" },
   { image: straight.url, title: "Luce, linea, essenzialità", category: "Taglio", detail: "Taglio geometrico · Biondo freddo" },

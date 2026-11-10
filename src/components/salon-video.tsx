@@ -9,7 +9,7 @@ export function SalonVideo({ url, poster, title }: { url: string; poster: string
   useEffect(() => {
     const video = videoRef.current;
     if (!video || typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver(([entry]) => {
+    const observer = new IntersectionObserver((entries) => { const entry = entries[0]; if (!entry) return;
       if (entry.isIntersecting) void video.play().catch(() => setPlaying(false));
       else video.pause();
     }, { threshold: 0.4 });

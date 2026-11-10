@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { CallButton } from "@/components/phone-contact";
 import brand from "@/assets/brand.jpg.asset.json";
 
-const nav = [["Servizi", "/servizi"], ["Barbershop", "/barbershop"], ["Lavori", "/lavori"], ["Prodotti", "/prodotti"], ["Il salone", "/il-salone"], ["Contatti", "/contatti"]] as const;
+const nav = [["Il salone", "salone"], ["I nostri lavori", "lavori"], ["Barbershop", "barbershop"], ["In movimento", "video"], ["Contatti", "contatti"]] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -18,7 +18,8 @@ export function SiteHeader() {
   return <header className="site-header container-shell">
     <Link to="/" aria-label="Hairshow, home"><img className="brand-image" src={brand.url} alt="Hairshow Parrucchieri" width="145" height="68" /></Link>
     <nav aria-label="Navigazione principale" className={`nav-links ${open ? "open" : ""}`}>
-      {nav.map(([label, to]) => <Link key={to} to={to} activeProps={{ className: "active" }} onClick={() => setOpen(false)}>{label}</Link>)}
+      {nav.map(([label, id]) => <a key={id} href={`/#${id}`} onClick={() => setOpen(false)}>{label}</a>)}
+      <Link to="/prodotti" activeProps={{ className: "active" }} onClick={() => setOpen(false)}>Prodotti</Link>
     </nav>
     <div className="header-actions">
       <CallButton className="desktop-booking" />
