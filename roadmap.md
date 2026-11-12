@@ -21,3 +21,4 @@
 - [x] Replace the hero “Scopri i nostri lavori” button with a direct-call phone number button.
 - [x] Remove look photos 1 and 5 from «Ogni look, una storia»
 - [x] Reorganize site into dedicated pages and shorten the home, with shared navigation on the home and products page.
+- [x] Expand salon and barbershop information on the home and dedicated pages without restoring full home galleries.
