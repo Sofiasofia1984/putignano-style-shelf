@@ -8,7 +8,7 @@ import { barbershop } from "@/lib/gallery";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/barbershop")({
-  head: () => pageHead({ path: "/barbershop", title: "Barbiere a Putignano: sfumature e tagli uomo | Hairshow", description: "Il barbershop di Hairshow a Putignano: sfumature, fade, rasature freestyle e tagli uomo. Prenota dall'app BarberApp.", image: barbershop[0].url, crumb: "Barbershop" }),
+  head: () => pageHead({ path: "/barbershop", title: "Barbiere a Putignano: sfumature e tagli uomo | Hairshow", description: "Il barbershop di Hairshow a Putignano: sfumature, fade, rasature freestyle e tagli uomo. Prenota dall'app BarberApp.", image: barbershop[0]?.url ?? "", crumb: "Barbershop" }),
   component: Barbershop,
 });
 

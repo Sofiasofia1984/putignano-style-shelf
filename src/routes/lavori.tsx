@@ -9,7 +9,7 @@ import { looks, films, type Category } from "@/lib/gallery";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/lavori")({
-  head: () => pageHead({ path: "/lavori", title: "I nostri lavori: tagli, colore e sposa | Hairshow Putignano", description: "Il portfolio di Hairshow Parrucchieri a Putignano: tagli, colori, balayage e acconciature sposa realizzati in salone.", image: looks[0].url, crumb: "Lavori" }),
+  head: () => pageHead({ path: "/lavori", title: "I nostri lavori: tagli, colore e sposa | Hairshow Putignano", description: "Il portfolio di Hairshow Parrucchieri a Putignano: tagli, colori, balayage e acconciature sposa realizzati in salone.", image: looks[0]?.url ?? "", crumb: "Lavori" }),
   component: Lavori,
 });
 

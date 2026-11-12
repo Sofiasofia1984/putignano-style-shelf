@@ -10,7 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Application structure
-- Keep the salon experience as a single content route with anchored sections, because the portfolio, team and contact details form one browsing flow.
+- Give each salon content area (salone, servizi, lavori, barbershop, contatti) its own route sharing SiteHeader and PageShell, because each needs its own search metadata.
 - Keep the product selection on its own /prodotti route and do not invent product listings or contact numbers, because reservations require the salon's real catalog and recipient.
 - Serve uploaded salon media through asset JSON pointers, because source media must stay outside the repository.
 - Define visual styles and semantic tokens in the global stylesheet and use shared Button variants for interactions, because the editorial design must remain consistent.
