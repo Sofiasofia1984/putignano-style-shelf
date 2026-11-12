@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowLeft, ArrowUpRight, MapPin, ShoppingBag, MessageCircle, Minus, Plus, Trash2 } from "lucide-react";
+import { ArrowUpRight, MapPin, ShoppingBag, MessageCircle, Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/social-links";
 import { SalonMap } from "@/components/salon-map";
@@ -8,7 +8,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { ProductDialog } from "@/components/product-dialog";
 import { products } from "@/lib/products";
 import { salon, whatsappUrl, productWhatsappUrl } from "@/lib/salon";
-import brand from "@/assets/brand.jpg.asset.json";
+import { SiteHeader } from "@/components/site-header";
 import lineup from "@/assets/product-linea1.webp.asset.json";
 import team from "@/assets/team.jpg.asset.json";
 
@@ -21,8 +21,6 @@ export const Route = createFileRoute("/prodotti")({
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
     { property: "og:url", content: "https://putignano-style-shelf.lovable.app/prodotti" },
-    { property: "og:image", content: `https://putignano-style-shelf.lovable.app${lineup.url}` },
-    { name: "twitter:image", content: `https://putignano-style-shelf.lovable.app${lineup.url}` },
   ],
   links: [{ rel: "canonical", href: "https://putignano-style-shelf.lovable.app/prodotti" }] }),
   component: Products,
@@ -36,10 +34,7 @@ function Products() {
   const chosen = products.filter(p => (quantities[p.id] ?? 0) > 0);
   const message = `Ciao Hairshow! Vorrei prenotare per il ritiro in salone:\n${chosen.map(p => `• ${quantities[p.id]} × ${p.name}`).join("\n")}\n\nRitiro in Via Noci 113, Putignano. Potete confermare prezzi e disponibilità? Grazie!`;
   return <>
-    <header className="site-header container-shell">
-      <Link to="/" aria-label="Hairshow, torna al salone"><img className="brand-image" src={brand.url} alt="Hairshow Parrucchieri" /></Link>
-      <Button asChild variant="link"><Link to="/"><ArrowLeft /> Il salone</Link></Button>
-    </header>
+    <SiteHeader />
     <main>
       <section className="products-intro products-cover">
         <img src={lineup.url} alt="La linea Hair Show Professional: pomate, cere e polvere per lo styling" fetchPriority="high" />
