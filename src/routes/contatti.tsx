@@ -7,11 +7,11 @@ import { SalonMap } from "@/components/salon-map";
 import { SocialLinks } from "@/components/social-links";
 import { salon, whatsappUrl } from "@/lib/salon";
 import { faqs } from "@/lib/faq";
-import { hairSalonSchema, pageHead } from "@/lib/seo";
+import { faqSchema, hairSalonSchema, pageHead } from "@/lib/seo";
 import hero from "@/assets/hero.jpg.asset.json";
 
 export const Route = createFileRoute("/contatti")({
-  head: () => pageHead({ path: "/contatti", title: "Contatti e mappa | Hairshow Parrucchieri, Via Noci 113 Putignano", description: "Hairshow Parrucchieri, Via Noci 113, 70017 Putignano (BA). Chiama il 329 63 56 935 o scrivi su WhatsApp. Dal martedì al sabato su prenotazione.", image: hero.url, crumb: "Contatti", schemas: [hairSalonSchema(hero.url)] }),
+  head: () => pageHead({ path: "/contatti", title: "Contatti e mappa | Hairshow Parrucchieri, Via Noci 113 Putignano", description: "Hairshow Parrucchieri, Via Noci 113, 70017 Putignano (BA). Chiama il 329 63 56 935 o scrivi su WhatsApp. Dal martedì al sabato su prenotazione.", image: hero.url, crumb: "Contatti", schemas: [hairSalonSchema(hero.url), faqSchema(faqs)] }),
   component: Contatti,
 });
 

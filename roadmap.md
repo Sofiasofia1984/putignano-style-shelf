@@ -14,9 +14,10 @@
 - [ ] Connect the existing Google Business Profile — awaiting Google account authorization and published website URL.
 - [x] Explain which legal details the website builder must obtain from the salon owner and who approves the privacy information.
 - [ ] Apply uploaded brief: showcase-only products, shared navigation, phone dialog and mobile contacts.
-- [ ] Update technical SEO, local font, cookie/privacy drafts and authentic review/FAQ section.
+- [x] Local font (Manrope via fontsource) and centralized per-page SEO with FAQPage markup.
+- [ ] Cookie/privacy drafts still need the salon owner's legal details (see lib/salon.ts).
 - [ ] Replace product photos and supplied icons — awaiting actual image files.
 - [ ] Complete legal identity and approve policies — awaiting salon owner’s details and review.
 - [x] Replace the “Prenota” button on product cards with a WhatsApp button.
 - [x] Replace the hero “Scopri i nostri lavori” button with a direct-call phone number button.- [x] Remove look photos 1 and 5 from «Ogni look, una storia»
-- [ ] Reorganize site into dedicated pages (brief: Riorganizzare il sito in pagine) — paused, credits ran out
+- [x] Reorganize site into dedicated pages: home is now a showcase with shared header; products, privacy and terms use the shared header and per-page SEO.

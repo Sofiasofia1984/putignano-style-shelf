@@ -1,27 +1,19 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { pageHead } from "@/lib/seo";
 import { salon } from "@/lib/salon";
 
-const url = "https://putignano-style-shelf.lovable.app/condizioni";
-
 export const Route = createFileRoute("/condizioni")({
-  head: () => ({ meta: [
-    { title: "Condizioni di vendita | Hairshow Parrucchieri Putignano" },
-    { name: "description", content: "Come prenotare i prodotti Hairshow su WhatsApp e ritirarli in salone in Via Noci 113, Putignano." },
-    { property: "og:title", content: "Condizioni di vendita — Hairshow Parrucchieri" },
-    { property: "og:description", content: "Prenotazione su WhatsApp, ritiro e pagamento in salone." },
-    { property: "og:type", content: "website" },
-    { property: "og:url", content: url },
-    { name: "twitter:card", content: "summary" },
-  ], links: [{ rel: "canonical", href: url }] }),
+  head: () => pageHead({ path: "/condizioni", title: "Condizioni di vendita | Hairshow Parrucchieri Putignano", description: "Come prenotare i prodotti Hairshow su WhatsApp e ritirarli in salone in Via Noci 113, Putignano.", crumb: "Condizioni di vendita" }),
   component: TermsPage,
 });
 
 function TermsPage() {
   return (
     <>
+      <SiteHeader />
       <main className="section container-shell legal-page">
-        <Link to="/" className="footer-brand">Hairshow.</Link>
         <h1>Condizioni di vendita</h1>
         <h2>Venditore</h2>
         <p>Hairshow Parrucchieri, {salon.address}. Telefono {salon.phoneLabel}.</p>
