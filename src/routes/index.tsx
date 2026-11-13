@@ -39,10 +39,10 @@ function Index() {
           <div className="hero-footer"><span>PASSIONE, CREATIVITÀ, CURA.</span><Link to="/servizi">I NOSTRI SERVIZI <ArrowUpRight size={14} /></Link></div>
         </div>
       </section>
-      <section className="home-team about-band">
+      <section id="salone" className="home-team about-band">
         <div className="container-shell home-team-layout">
           <img src={team.url} alt="Il team Hairshow insieme in salone" loading="lazy" />
-          <div><span className="eyebrow">Piacere, Hairshow</span><h2>Le mani, la passione.</h2><p>Il nostro spazio di creatività a Putignano. E il tuo momento da dedicare a te.</p><p>Ogni look parte dall'ascolto: il tuo stile, i tuoi capelli, ciò che ti fa sentire bene. Dal taglio al colore, dalle acconciature alla cura del capello, scegliamo insieme il percorso più adatto a te.</p><Button asChild variant="link" className="p-0"><Link to="/salone">Il salone e il team <ArrowUpRight /></Link></Button><Button asChild variant="link"><Link to="/servizi">Tutti i servizi <ArrowUpRight /></Link></Button></div>
+          <div><span className="eyebrow">Piacere, Hairshow</span><h2>Le mani, la passione.</h2><p>Il nostro spazio di creatività a Putignano. E il tuo momento da dedicare a te.</p><p>Ogni look parte dall'ascolto: il tuo stile, i tuoi capelli, ciò che ti fa sentire bene. Dal taglio al colore, dalle acconciature alla cura del capello, scegliamo insieme il percorso più adatto a te.</p><Button asChild variant="link" className="p-0"><Link to="/servizi">Tutti i servizi <ArrowUpRight /></Link></Button></div>
         </div>
       </section>
       <section className="section container-shell" aria-labelledby="home-looks-title">
