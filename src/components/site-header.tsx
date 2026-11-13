@@ -9,7 +9,6 @@ const nav = [
   ["Il salone", "/salone"],
   ["Servizi", "/servizi"],
   ["Lavori", "/lavori"],
-  ["Barbershop", "/barbershop"],
   ["Prodotti", "/prodotti"],
   ["Contatti", "/contatti"],
 ] as const;

@@ -1,10 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowRight, ArrowUpRight, ArrowDown, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { BookingBand } from "@/components/page-shell";
-import { looks, barbershop, services } from "@/lib/gallery";
+import { Lightbox } from "@/components/lightbox";
+import { SalonVideo } from "@/components/salon-video";
+import { looks, barbershop, services, films } from "@/lib/gallery";
 import { hairSalonSchema, pageHead } from "@/lib/seo";
 import { salon } from "@/lib/salon";
 import hero from "@/assets/hero.jpg.asset.json";
@@ -26,6 +29,7 @@ export const Route = createFileRoute("/")({
 const previewLooks = looks.slice(0, 6);
 
 function Index() {
+  const [barberIndex, setBarberIndex] = useState<number | null>(null);
   return (
     <>
       <SiteHeader />
@@ -65,7 +69,7 @@ function Index() {
           <div className="section-heading"><div><span className="eyebrow">Servizi</span><h2>Cosa facciamo.</h2></div><p>Ogni servizio parte dall'ascolto.<br />Scegliamo insieme il look che ti rappresenta.</p></div>
           <div className="service-strip">
             {services.map(s => <Link key={s.id} to="/servizi" hash={s.id}><b>{s.name}</b></Link>)}
-            <Link to="/barbershop"><b>Barbershop</b></Link>
+            <a href="#barbershop"><b>Barbershop</b></a>
           </div>
           <Button asChild variant="link" className="p-0"><Link to="/servizi">Tutti i servizi <ArrowUpRight /></Link></Button>
         </section>
@@ -82,18 +86,26 @@ function Index() {
           <div className="hero-actions" style={{ marginTop: 32 }}><Button asChild variant="editorial"><Link to="/lavori">Vedi tutti i lavori e i video <ArrowUpRight /></Link></Button></div>
         </section>
 
-        <section className="section barbershop-band">
+        <section id="barbershop" className="section barbershop-band">
           <div className="container-shell">
             <div className="section-heading"><div><span className="eyebrow">Barbershop</span><h2>Il rito del barbiere.</h2></div><p>Precisione, cura e tradizione.<br />Il nostro angolo barbershop, dedicato a lui.</p></div>
+            <div className="hero-actions" style={{ marginBottom: 32 }}>
+              <p>Prenota il tuo taglio dall'app BarberApp — solo per uomini, per adesso.</p>
+              <Button asChild variant="inverse"><a href="https://www.softwareline.cloud/qr/BarberApp.php" target="_blank" rel="noopener noreferrer">Tutorial: prenota dall'app <ArrowUpRight /></a></Button>
+            </div>
             <div className="works-grid barbershop-grid">
-              {barbershop.map(l => (
-                <Button asChild variant="ghost" className="work-item" key={l.title}>
-                  <Link to="/barbershop"><div className="w-full"><div className="work-image"><img src={l.url} alt={`${l.title} – barbiere a Putignano, Hairshow`} loading="lazy" /></div><div className="work-caption"><div><h3>{l.title}</h3><p>{l.detail}</p></div><ArrowUpRight size={18} /></div></div></Link>
+              {barbershop.map((l, i) => (
+                <Button variant="ghost" className="work-item" key={l.title} aria-label={`Apri foto: ${l.title}`} onClick={() => setBarberIndex(i)}>
+                  <div className="w-full"><div className="work-image"><img src={l.url} alt={`${l.title} – barbiere a Putignano, Hairshow`} loading="lazy" /></div><div className="work-caption"><div><h3>{l.title}</h3><p>{l.detail}</p></div><ArrowUpRight size={18} /></div></div>
                 </Button>
               ))}
             </div>
-            <div className="hero-actions" style={{ marginTop: 32 }}><Button asChild variant="inverse"><Link to="/barbershop">Scopri il barbershop <ArrowUpRight /></Link></Button></div>
           </div>
+        </section>
+
+        <section className="section container-shell">
+          <div className="section-heading"><div><span className="eyebrow">In movimento</span><h2>Lo stile non si ferma.</h2></div><p>Riflessi, texture e movimento.<br />I nostri lavori, da un'altra prospettiva.</p></div>
+          <div className="video-grid">{films.map(f => <SalonVideo key={f.url} {...f} />)}</div>
         </section>
 
         <section className="section container-shell">
@@ -107,6 +119,7 @@ function Index() {
         <BookingBand />
       </main>
       <SiteFooter />
+      <Lightbox items={barbershop} index={barberIndex} onChange={setBarberIndex} />
     </>
   );
 }
