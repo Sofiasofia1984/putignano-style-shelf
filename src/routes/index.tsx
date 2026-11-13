@@ -3,25 +3,20 @@ import { ArrowUpRight, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { WorkGallery } from "@/components/work-gallery";
+import { looks, barbershop } from "@/lib/gallery";
 import { salon, whatsappUrl } from "@/lib/salon";
 import { hairSalonSchema, pageHead } from "@/lib/seo";
 import hero from "@/assets/hero.jpg.asset.json";
 import team from "@/assets/team.jpg.asset.json";
-import color from "@/assets/look-color.jpg.asset.json";
-import barber from "@/assets/barber-fade.jpg.asset.json";
 import products from "@/assets/product-linea1.webp.asset.json";
-import barberStyling from "@/assets/barbershop-styling.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => pageHead({ path: "/", title: "Parrucchiere e Barbiere a Putignano | Hairshow Parrucchieri", description: "Hairshow Parrucchieri in Via Noci 113, Putignano: taglio, colore, acconciature e barbershop. Scopri il salone e prenota su WhatsApp.", image: hero.url, schemas: [hairSalonSchema(hero.url)] }),
   component: Index,
 });
 
-const previews = [
-  { to: "/lavori", image: color.url, title: "I nostri lavori", detail: "Tagli, colore e acconciature", alt: "Colore realizzato da Hairshow a Putignano" },
-  { to: "/barbershop", image: barber.url, title: "Barbershop", detail: "Sfumature e tagli uomo", alt: "Sfumatura platino del barbershop Hairshow" },
-  { to: "/prodotti", image: products.url, title: "Prodotti", detail: "Hair Show Professional", alt: "Prodotti Hair Show Professional del salone" },
-] as const;
+const homeLooks = looks.filter(item => ["Un colore che ti racconta", "Biondo in movimento", "Rame, pura luce", "Il giorno più bello", "Taglio d'autore", "Ricci allo specchio"].includes(item.title));
 
 function Index() {
   return <>
@@ -49,15 +44,18 @@ function Index() {
           <div><span className="eyebrow">Piacere, Hairshow</span><h2>Le mani, la passione.</h2><p>Il nostro spazio di creatività a Putignano. E il tuo momento da dedicare a te.</p><p>Ogni look parte dall'ascolto: il tuo stile, i tuoi capelli, ciò che ti fa sentire bene. Dal taglio al colore, dalle acconciature alla cura del capello, scegliamo insieme il percorso più adatto a te.</p><Button asChild variant="link" className="p-0"><Link to="/salone">Il salone e il team <ArrowUpRight /></Link></Button><Button asChild variant="link"><Link to="/servizi">Tutti i servizi <ArrowUpRight /></Link></Button></div>
         </div>
       </section>
-      <section className="section container-shell home-previews" aria-label="Scopri Hairshow">
-        <div className="works-grid">{previews.map(item => <Link key={item.to} to={item.to} className="home-preview"><div className="work-image"><img src={item.image} alt={item.alt} loading="lazy" /></div><div className="work-caption"><div><h2>{item.title}</h2><p>{item.detail}</p></div><ArrowUpRight size={20} /></div></Link>)}</div>
+      <section className="section container-shell" aria-labelledby="home-looks-title">
+        <div className="section-heading"><div><span className="eyebrow">Firmato Hairshow</span><h2 id="home-looks-title">Ogni look, una storia.</h2></div><Button asChild variant="link"><Link to="/lavori">Tutti i lavori <ArrowUpRight /></Link></Button></div>
+        <WorkGallery items={homeLooks} />
       </section>
-      <section className="section barbershop-band">
-        <div className="container-shell about-layout">
-          <img className="about-photo" src={barberStyling.url} alt="Il lavoro di styling nel barbershop Hairshow" loading="lazy" />
-          <div><span className="eyebrow">Barbershop · Putignano</span><h2>Precisione, carattere.<br />Il tuo stile.</h2><p className="text-sm leading-7 mt-6 mb-4">Un angolo dedicato ai tagli uomo: sfumature, fade e rasature artistiche. Dalle linee pulite ai dettagli freestyle, il look prende forma con cura e attenzione.</p><p className="text-sm leading-7 mb-6">Per il barbershop puoi prenotare anche con BarberApp, solo per uomini per adesso. Per informazioni, scrivici su WhatsApp.</p><div className="hero-actions"><Button asChild variant="inverse"><Link to="/barbershop">Scopri il barbershop <ArrowUpRight /></Link></Button><Button asChild variant="glass"><a href="https://www.softwareline.cloud/qr/BarberApp.php" target="_blank" rel="noopener noreferrer">Tutorial: prenota dall'app <ArrowUpRight /></a></Button></div></div>
+      <section id="barbershop" className="section barbershop-band" aria-labelledby="home-barber-title">
+        <div className="container-shell">
+          <div className="section-heading"><div><span className="eyebrow">Barbershop · Putignano</span><h2 id="home-barber-title">Precisione, carattere.<br />Il tuo stile.</h2></div><p>Tagli uomo, sfumature e rasature artistiche. Un angolo dedicato a lui, con cura per ogni dettaglio.</p></div>
+          <WorkGallery items={barbershop} />
+          <div className="home-barber-booking"><div><h3>Il tuo prossimo appuntamento.</h3><p>Con BarberApp puoi prenotare il tuo taglio — solo per uomini, per adesso. Per informazioni, scrivici su WhatsApp.</p></div><div className="hero-actions"><Button asChild variant="inverse"><a href={whatsappUrl("Ciao Hairshow! Vorrei informazioni sul barbershop.")} target="_blank" rel="noopener noreferrer"><MessageCircle /> WhatsApp</a></Button><Button asChild variant="glass"><a href="https://www.softwareline.cloud/qr/BarberApp.php" target="_blank" rel="noopener noreferrer">Tutorial: prenota dall'app <ArrowUpRight /></a></Button></div></div>
         </div>
       </section>
+      <section className="section about-band"><div className="container-shell about-layout"><img className="about-photo" src={products.url} alt="La linea Hair Show Professional disponibile in salone" loading="lazy" /><div className="about-copy"><span className="eyebrow">La cura continua</span><h2>Lo stile, anche a casa.</h2><p>Scopri la linea Hair Show Professional e chiedici un consiglio per lo styling dei tuoi capelli. I prodotti si ritirano direttamente in salone.</p><Button asChild variant="editorial"><Link to="/prodotti">Scopri i prodotti <ArrowUpRight /></Link></Button></div></div></section>
       <section className="home-contact contact-band"><div className="container-shell contact-layout"><div><span className="eyebrow">Ti aspettiamo</span><h2>Ci vediamo in salone.</h2><p>{salon.address}<br />{salon.opening}</p></div><Button asChild variant="inverse"><Link to="/contatti">Contatti e mappa <ArrowUpRight /></Link></Button></div></section>
     </main>
     <SiteFooter />

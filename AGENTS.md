@@ -10,7 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Application structure
-- Give each salon content area (salone, servizi, lavori, barbershop, contatti) its own route sharing SiteHeader and PageShell, because each needs its own search metadata.
+- Give standalone salon content areas their own routes sharing SiteHeader and PageShell; preserve relocated URLs with redirects so old links remain usable.
 - Keep the product selection on its own /prodotti route and do not invent product listings or contact numbers, because reservations require the salon's real catalog and recipient.
 - Serve uploaded salon media through asset JSON pointers, because source media must stay outside the repository.
 - Define visual styles and semantic tokens in the global stylesheet and use shared Button variants for interactions, because the editorial design must remain consistent.
@@ -18,4 +18,5 @@
 - Keep supplied catalog data and salon contact details in browser-safe shared modules; build pickup-only WhatsApp requests from in-memory quantities without collecting customer data or implying a confirmed order, because reservations are confirmed directly by the salon.
 - Use the native modal dialog for product details, because browser-managed focus, Escape and focus restoration avoid loading the separate Radix dialog React dependency in this route.
 
-- Keep the home as a short introduction with linked photo previews; full galleries and videos belong on their dedicated content pages, so navigation does not duplicate the long page.
+- Compose home photo selections with WorkGallery and keep the full salon portfolio and videos on their dedicated route, so image viewing behavior stays consistent without duplicating the entire portfolio.
+- Share NotFoundPage between the root unmatched-path boundary and the noindex /404 preview route, so both show the same branded recovery experience.

@@ -9,7 +9,6 @@ const nav = [
   ["Il salone", "/salone"],
   ["Servizi", "/servizi"],
   ["Lavori", "/lavori"],
-  ["Barbershop", "/barbershop"],
   ["Prodotti", "/prodotti"],
   ["Contatti", "/contatti"],
 ] as const;
@@ -26,6 +25,7 @@ export function SiteHeader() {
     <Link to="/" aria-label="Hairshow, home"><img className="brand-image" src={brand.url} alt="Hairshow Parrucchieri" width="145" height="68" /></Link>
     <nav aria-label="Navigazione principale" className={`nav-links ${open ? "open" : ""}`}>
       {nav.map(([label, to]) => <Link key={to} to={to} activeProps={{ className: "active" }} onClick={() => setOpen(false)}>{label}</Link>)}
+      <Link to="/" hash="barbershop" onClick={() => setOpen(false)}>Barbershop</Link>
     </nav>
     <Button asChild variant="editorial" className="desktop-booking"><a href={`tel:${salon.phone}`}><Phone size={16} />{salon.phoneLabel}</a></Button>
     <Button variant="ghost" size="icon" className="mobile-menu" aria-expanded={open} aria-label={open ? "Chiudi menu" : "Apri menu"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>

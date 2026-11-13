@@ -1,4 +1,5 @@
 # Hairshow
+- [x] Move Barbershop into the home, add selected salon looks and provide a branded Italian 404 page.
 - [x] Build the monochrome salon website with original photos and playable videos.
 - [x] Add the products page and salon-pickup information.
 - [x] Make salon videos autoplay silently with playback controls.

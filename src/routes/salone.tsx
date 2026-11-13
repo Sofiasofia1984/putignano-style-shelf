@@ -22,6 +22,6 @@ function Salone() {
       </div>
       <div className="hero-actions mt-8"><Button asChild variant="editorial"><Link to="/servizi">Scopri i servizi <ArrowUpRight /></Link></Button><Button asChild variant="outline"><Link to="/lavori">I nostri lavori <ArrowUpRight /></Link></Button></div>
     </section>
-    <section className="section about-band"><div className="container-shell section-heading"><div><span className="eyebrow">Anche per lui</span><h2>Il nostro barbershop.</h2><p className="mt-6">Tagli uomo, sfumature e rasature artistiche in uno spazio dedicato alla precisione e ai dettagli.</p></div><Button asChild variant="editorial"><Link to="/barbershop">Entra nel barbershop <ArrowUpRight /></Link></Button></div></section>
+    <section className="section about-band"><div className="container-shell section-heading"><div><span className="eyebrow">Anche per lui</span><h2>Il nostro barbershop.</h2><p className="mt-6">Tagli uomo, sfumature e rasature artistiche in uno spazio dedicato alla precisione e ai dettagli.</p></div><Button asChild variant="editorial"><Link to="/" hash="barbershop">Entra nel barbershop <ArrowUpRight /></Link></Button></div></section>
   </PageShell>;
 }
