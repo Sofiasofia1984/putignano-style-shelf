@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { WorkGallery } from "@/components/work-gallery";
-import { looks, barbershop } from "@/lib/gallery";
+import { SalonVideo } from "@/components/salon-video";
+import { looks, barbershop, films } from "@/lib/gallery";
 import { salon, whatsappUrl } from "@/lib/salon";
 import { hairSalonSchema, pageHead } from "@/lib/seo";
 import hero from "@/assets/hero.jpg.asset.json";
@@ -47,6 +48,10 @@ function Index() {
       <section className="section container-shell" aria-labelledby="home-looks-title">
         <div className="section-heading"><div><span className="eyebrow">Firmato Hairshow</span><h2 id="home-looks-title">Ogni look, una storia.</h2></div><Button asChild variant="link"><Link to="/lavori">Tutti i lavori <ArrowUpRight /></Link></Button></div>
         <WorkGallery items={homeLooks} />
+      </section>
+      <section className="section container-shell" aria-labelledby="home-video-title">
+        <div className="section-heading"><div><span className="eyebrow">In movimento</span><h2 id="home-video-title">Lo stile prende vita.</h2></div></div>
+        <div className="video-grid">{films.map(film => <SalonVideo key={film.url} {...film} />)}</div>
       </section>
       <section id="barbershop" className="section barbershop-band" aria-labelledby="home-barber-title">
         <div className="container-shell">

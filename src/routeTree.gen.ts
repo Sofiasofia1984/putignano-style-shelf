@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as R404RouteImport } from './routes/404'
-import { Route as BarbershopRouteImport } from './routes/barbershop'
 import { Route as CondizioniRouteImport } from './routes/condizioni'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as LavoriRouteImport } from './routes/lavori'
@@ -30,11 +29,6 @@ const IndexRoute = IndexRouteImport.update({
 const R404Route = R404RouteImport.update({
   id: '/404',
   path: '/404',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BarbershopRoute = BarbershopRouteImport.update({
-  id: '/barbershop',
-  path: '/barbershop',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CondizioniRoute = CondizioniRouteImport.update({
@@ -86,7 +80,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
-  '/barbershop': typeof BarbershopRoute
   '/condizioni': typeof CondizioniRoute
   '/contatti': typeof ContattiRoute
   '/lavori': typeof LavoriRoute
@@ -100,7 +93,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
-  '/barbershop': typeof BarbershopRoute
   '/condizioni': typeof CondizioniRoute
   '/contatti': typeof ContattiRoute
   '/lavori': typeof LavoriRoute
@@ -115,7 +107,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/404': typeof R404Route
-  '/barbershop': typeof BarbershopRoute
   '/condizioni': typeof CondizioniRoute
   '/contatti': typeof ContattiRoute
   '/lavori': typeof LavoriRoute
@@ -131,7 +122,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/404'
-    | '/barbershop'
     | '/condizioni'
     | '/contatti'
     | '/lavori'
@@ -145,7 +135,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/404'
-    | '/barbershop'
     | '/condizioni'
     | '/contatti'
     | '/lavori'
@@ -159,7 +148,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/404'
-    | '/barbershop'
     | '/condizioni'
     | '/contatti'
     | '/lavori'
@@ -174,7 +162,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
-  BarbershopRoute: typeof BarbershopRoute
   CondizioniRoute: typeof CondizioniRoute
   ContattiRoute: typeof ContattiRoute
   LavoriRoute: typeof LavoriRoute
@@ -200,13 +187,6 @@ declare module '@tanstack/react-router' {
       path: '/404'
       fullPath: '/404'
       preLoaderRoute: typeof R404RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/barbershop': {
-      id: '/barbershop'
-      path: '/barbershop'
-      fullPath: '/barbershop'
-      preLoaderRoute: typeof BarbershopRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/condizioni': {
@@ -278,7 +258,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
-  BarbershopRoute: BarbershopRoute,
   CondizioniRoute: CondizioniRoute,
   ContattiRoute: ContattiRoute,
   LavoriRoute: LavoriRoute,
