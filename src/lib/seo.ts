@@ -8,7 +8,9 @@ export const hairSalonSchema = (image: string) => ({
   address: { "@type": "PostalAddress", streetAddress: "Via Noci 113", postalCode: "70017", addressLocality: "Putignano", addressRegion: "BA", addressCountry: "IT" },
   url: `${siteUrl}/`,
   ...(image.startsWith("https://") ? { image } : {}),
-  openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] }],
+  description: "Parrucchiere e barbiere a Putignano. Taglio, colore, balayage e acconciature. Dal martedì al sabato, su prenotazione.",
+  areaServed: { "@type": "City", name: "Putignano" },
+  hasOfferCatalog: { "@type": "OfferCatalog", name: "Servizi Hairshow", itemListElement: ["Taglio e styling", "Colore e balayage", "Trattamenti capelli", "Acconciature sposa", "Barbershop: tagli uomo e sfumature"].map(name => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })) },
   sameAs: ["https://www.instagram.com/hairshow_parrucchieri", "https://www.facebook.com/Hairshowparrucchieri", "https://www.tiktok.com/@hairshow.parrucch"],
   hasMap: salon.mapsUrl,
 });

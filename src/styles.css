@@ -1,11 +1,12 @@
 @import "tailwindcss" source(none);
 @import "tw-animate-css";
+@import "@fontsource-variable/manrope";
 @source "../src";
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Manrope", sans-serif;
-  --font-display: "Manrope", sans-serif;
+  --font-sans: "Manrope Variable", sans-serif;
+  --font-display: "Manrope Variable", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -240,9 +241,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .nav-links a.active { color: var(--foreground); text-decoration: underline; text-underline-offset: 6px; }
 .page-title { font-size: 54px; line-height: 1.15; font-weight: 500; margin: 16px 0 0; }
 .home-hero { height: min(610px, 72svh); min-height: 470px; }
-.home-team { padding-block: 44px; }
-.home-team-layout { display: grid; grid-template-columns: 240px 1fr; gap: 48px; align-items: center; }
-.home-team-layout > img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; filter: grayscale(1); }
+.home-team { padding-block: 64px; }
+.home-team-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.home-team-layout > img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
 .home-team h2 { font-size: 34px; line-height: 1.2; font-weight: 500; margin: 12px 0; }
 .home-team p { font-size: 14px; line-height: 1.8; color: var(--muted-foreground); margin-bottom: 12px; }
 .home-previews { padding-block: 48px; }
@@ -259,11 +260,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 1100px) and (min-width: 641px) { .nav-links { gap: 14px; } .desktop-booking { padding-inline: 12px; } }
 @media (max-width: 640px) {
  .home-hero { height: 550px; min-height: 0; }
- .home-team-layout { grid-template-columns: 110px minmax(0, 1fr); gap: 20px; }
+ .home-team-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
  .home-team-layout > img { aspect-ratio: 3 / 4; }
  .home-team h2 { font-size: 24px; }
- .home-team p { font-size: 12px; }
- .home-team { padding-block: 30px; }
+ .home-team p { font-size: 14px; }
+ .home-team { padding-block: 40px; }
  .home-previews .works-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
  .home-preview .work-image { aspect-ratio: 3 / 4; }
  .home-previews .work-caption h2 { font-size: 14px; overflow-wrap: anywhere; }

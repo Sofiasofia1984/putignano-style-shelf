@@ -22,11 +22,11 @@ function PrivacyPage() {
         <Link to="/" className="footer-brand">Hairshow.</Link>
         <h1>Privacy e cookie</h1>
         <h2>Titolare</h2>
-        <p>Hairshow Parrucchieri, {salon.address}. Telefono {salon.phoneLabel}.</p>
+        <p>Il sito presenta Hairshow Parrucchieri, {salon.address}. Telefono {salon.phoneLabel}. La ragione sociale del titolare e il contatto privacy devono essere confermati dal salone prima della pubblicazione.</p>
         <h2>Dati raccolti</h2>
         <p>Il sito non ha moduli, account né pagamenti online. Quando ci scrivi su WhatsApp o ci chiami, i dati che condividi sono usati solo per rispondere e gestire appuntamenti o il ritiro dei prodotti in salone.</p>
         <h2>Cookie tecnici</h2>
-        <p>Salviamo nel tuo browser solo la tua scelta sulle preferenze cookie (voce «hairshow-consent», conservata finché non la cambi o cancelli i dati del browser). Non usiamo cookie di profilazione né statistiche. I caratteri del sito sono caricati da Google Fonts, che riceve il tuo indirizzo IP.</p>
+        <p>Salviamo nel tuo browser la tua scelta sulle preferenze cookie (voce «hairshow-consent», conservata finché non la cambi o cancelli i dati del browser). Non usiamo cookie di profilazione né statistiche. Il carattere Manrope, disponibile su Google Fonts, è ospitato insieme al sito: non viene richiesto ai server di Google Fonts.</p>
         <h2>Contenuti di terze parti</h2>
         <p>La mappa di Google Maps viene caricata solo dopo il tuo consenso e può impostare cookie di Google. I link a Instagram, Facebook, TikTok e WhatsApp portano a servizi esterni con proprie informative.</p>
         <h2>I tuoi diritti</h2>

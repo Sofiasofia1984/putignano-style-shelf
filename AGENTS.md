@@ -20,3 +20,5 @@
 
 - Compose home photos with WorkGallery and home video selections with SalonVideo; keep the full salon portfolio on its dedicated route, so media behavior stays consistent across pages.
 - Share NotFoundPage between the root unmatched-path boundary and the noindex /404 preview route, so both show the same branded recovery experience.
+- Load the font from the installed Fontsource package in global CSS, not Google-hosted stylesheets, to avoid third-party font requests.
+- Omit structured opening hours until exact times are supplied; describe appointment days in prose so search data does not invent hours.

@@ -1,4 +1,5 @@
 # Hairshow
+- [x] Enlarge the team photo, self-host Manrope, verify current SEO and consent behavior, and correct crawl metadata without inventing legal details.
 - [x] Remove the standalone Barbershop route entirely and add original silent videos on the home alongside the existing barber section.
 - [x] Move Barbershop into the home, add selected salon looks and provide a branded Italian 404 page.
 - [x] Build the monochrome salon website with original photos and playable videos.
